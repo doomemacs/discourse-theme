@@ -1,0 +1,76 @@
+{
+	"name": "Doom Discourse Base Theme",
+	"license_url": null,
+	"about_url": "https://github.com/doomemacs/discourse-theme",
+	"authors": null,
+	"theme_version": null,
+	"minimum_discourse_version": null,
+	"maximum_discourse_version": null,
+	"assets": {
+		"hljs-atom-one-dark": "/assets/hljs/atom-one-dark.css",
+		"hljs-atom-one-light": "/assets/hljs/atom-one-light.css",
+		"hljs-hybrid": "/assets/hljs/hybrid.css",
+		"hljs-nord": "/assets/hljs/nord.css"
+	},
+	"color_schemes": {
+		"doom-one": {
+			"primary": "cbd2df",
+			"secondary": "282c34",
+			"tertiary": "51afef",
+			"quaternary": "a9a1e1",
+			"quaternary-low": "181b21",
+			"header_background": "21242b",
+			"header_primary": "bbc2cf",
+			"highlight": "51afef",
+			"danger": "ff6c6b",
+			"success": "98be65",
+			"love": "c678dd"
+		},
+		"doom-one-light": {
+			"primary": "383a42",
+			"secondary": "fafafa",
+			"tertiary": "0184bc",
+			"quaternary": "a626a4",
+			"header_background": "dfdfdf",
+			"header_primary": "1c1f24",
+			"highlight": "4078f2",
+			"danger": "e45649",
+			"success": "5ebd5d",
+			"love": "a626a4"
+		},
+		"doom-dracula": {
+			"primary": "f8f8f2",
+			"primary-high": "8d93b5",
+			"primary-medium": "bd93f9",
+			"primary-very-low": "201e25",
+			"primary-low": "1e2029",
+			"primary-low-mid": "bd93f9",
+			"primary-or-primary-low-mid": "f1fa8c",
+			"secondary": "282a36",
+			"tertiary": "bd93f9",
+			"tertiary-low": "6B43A4",
+			"quaternary": "50fa7b",
+			"quaternary-low": "141815",
+			"header_background": "1E2029",
+			"header_primary": "e2e2dc",
+			"header_primary-low-mid": "8d93b5",
+			"highlight": "bd93f9",
+			"danger": "ff5555",
+			"success": "50fa7b",
+			"love": "ff79c6"
+		},
+		"doom-city-lights": {
+			"primary": "A0B3C5",
+			"secondary": "1D252C",
+			"tertiary": "5EC4FF",
+			"quaternary": "70E1E8",
+			"quaternary-low": "2a4f52",
+			"header_background": "181E24",
+			"header_primary": "A0B3C5",
+			"highlight": "5EC4FF",
+			"danger": "D95468",
+			"success": "8BD49C",
+			"love": "E27E8D"
+		}
+	}
+}

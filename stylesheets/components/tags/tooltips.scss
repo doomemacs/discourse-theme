@@ -1,0 +1,155 @@
+/* components/tags/tooltips.scss
+ *
+ * Yes, adding content via CSS is poor taste, ~~but it's important that tags are
+ * clear, and until we self-host discourse, there is no other way.~~
+ *
+ * TODO Now that we self-host, move this over to a plugin!
+ */
+
+// Tooltips for tags
+a.hashtag[href*="/tag/"] { z-index: 9999; }
+.discourse-tag[data-tag-name], a.hashtag[href*="/tag/"] {
+    overflow: visible;
+    &:after {
+        transition: opacity 0s linear 0.28s;
+        opacity: 0;
+        content: "";
+    }
+    &:hover {
+        position: relative;
+        &.bullet { z-index: 1; }
+        &:after {
+            display: none;
+            text-transform: none;
+            opacity: 1;
+            position: absolute;
+            top: 1.45em;
+            left: 0;
+            width: 20em;
+            white-space: normal;
+            padding: 6px 10px;
+            border-radius: 2px;
+            border: 1px solid var(--primary-low);
+            color: var(--primary);
+            background-color: var(--tag-tooltip-bg);
+            z-index: 10;
+            font-weight: normal;
+            font-size: 95%;
+        }
+    }
+}
+
+
+// Announcement Types
+@include tag-tooltip("=breaking-change", "An update that requires changes to your config");
+@include tag-tooltip("=community", "Applies to Doom's community across Discourse, Discord, Reddit, and Github");
+@include tag-tooltip("=event", "An event, at a time and a place");
+@include tag-tooltip("=status", "An update about Henrik's work schedule");
+@include tag-tooltip("=poll", "A user survey");
+@include tag-tooltip("=release", "An update regarding a Doom Emacs release");
+@include tag-tooltip("^=news-", "For announcements on a particular topic");
+
+// Emacs Context
+@include tag-tooltip("=daemon", "Only applies to using Emacs with the daemon");
+@for $i from 26 through 28 {
+    @include tag-tooltip("=emacs#{$i}", "Only applies to Emacs #{$i}");
+}
+@include tag-tooltip("=exwm", "Applies to EXWM users");
+@include tag-tooltip("=gui", "Only applies to graphical Emacs");
+@include tag-tooltip("=native-comp", "Only applies to gccemacs (the native-comp branch of Emacs)");
+@include tag-tooltip("=pgtk", "Only applies to the pgtk fork of Emacs");
+@include tag-tooltip("=tty", "Only applies to Emacs in the terminal");
+
+// Issue Priority
+@include tag-tooltip("=low-priority", "Likely to be backlogged");
+@include tag-tooltip("=high-priority", "Should be addressed ASAP");
+@include tag-tooltip("=urgent", "To be addressed immediately");
+
+// Issue Status
+@include tag-tooltip("=closed", "This issue is resolved");
+@include tag-tooltip("=on-hold", "This issue is currently blocked and cannot progress");
+@include tag-tooltip("=unconfirmed", "This issue is still under investigation");
+@include tag-tooltip("=verified", "This issue has been confirmed and is awaiting action");
+@include tag-tooltip("=unreviewed", "Awaiting investigation and designation");
+
+// Issue Reason
+@include tag-tooltip("=backlog", "Cannot be addressed due to time constraints or indecision; PRs welcome!");
+@include tag-tooltip("=duplicate", "This has already been discussed in another post");
+@include tag-tooltip("=help-wanted", "Is beyond our expertise or backlogged; PRs welcome");
+@include tag-tooltip("=incomplete", "Cannot proceed without more information");
+@include tag-tooltip("=invalid", "Not an issue; usually a pilot error or config issue");
+@include tag-tooltip("=nofix", "Cannot be addressed");
+@include tag-tooltip("=obsolete", "No longer applies to recent versions of Doom Emacs");
+@include tag-tooltip("=solved", "An acceptable solution was found");
+@include tag-tooltip("=stale", "No response or context forgotten/abandoned");
+@include tag-tooltip("=unknown", "Cannot reproduce the issue; cannot investigate further");
+@include tag-tooltip("=waiting", "Issue is awaiting decision or action");
+@include tag-tooltip("=wontfix", "Will not be addressed");
+@include tag-tooltip("=workaround", "Workarounds exist, but no acceptable solution is known");
+
+// Issue Type
+@include tag-tooltip("=bug", "A confirmed bug or issue with Doom");
+@include tag-tooltip("=faq", "This has been asked/reported many times");
+@include tag-tooltip("=local", "Caused by the user's configuration of Doom or the system");
+@include tag-tooltip("=not-a-bug", "Behavior that is misinterpreted as a bug");
+@include tag-tooltip("=question", "A general question or request for advice");
+@include tag-tooltip("=suggestion", "An idea to improve Doom");
+
+// Subjects
+@include tag-tooltip("=best-practices", "Concerns idiomatic and canonical use of Doom");
+@include tag-tooltip("=ci-cd", "Concerns Doom's continuous integration/delivery framework");
+@include tag-tooltip("=concepts", "An introduction to or explanation of concepts in Emacs or Doom");
+@include tag-tooltip("=config", "Concerns the reconfiguration of Doom and its plugins");
+@include tag-tooltip("=conventions", "Concerns Doom's code, documentation, or naming conventions");
+@include tag-tooltip("=completion", "Concerns code completion");
+@include tag-tooltip("=debugging", "Concerns the process of debugging code");
+@include tag-tooltip("=defaults", "Concerns Doom's default configuration");
+@include tag-tooltip("=docs", "Concerns the documentation for Doom or one of its modules");
+@include tag-tooltip("=doom-cli", "Concerns the use of Doom's bin/doom script");
+@include tag-tooltip("=doom-doctor", "Concerns Doom's 'doom doctor' command and what it checks");
+@include tag-tooltip("=editing", "Concerns the process of editing text in a buffer");
+@include tag-tooltip("=email", "Concerns using Emacs as an email client");
+@include tag-tooltip("=evil", "Concerns the use of vim emulation through evil-mode");
+@include tag-tooltip("=helm", "Concerns the helm completion framework");
+@include tag-tooltip("=i18n", "Concerns internationalization of Doom (support for more languages)");
+@include tag-tooltip("=install", "Concerns the first time installation of Doom Emacs");
+@include tag-tooltip("=irc", "Concerns using Emacs as an IRC client");
+@include tag-tooltip("=ivy", "Concerns the ivy completion framework");
+@include tag-tooltip("=keys", "Concerns Doom's keybinds");
+@include tag-tooltip("=linter", "Concerns Doom's syntax checkers (flycheck)");
+@include tag-tooltip("=lookup", "Concerns Doom's lookup functionality (goto definition/ref, documentation, etc)");
+@include tag-tooltip("=magit", "Concerns the use or configuration of magit");
+@include tag-tooltip("=modules", "Concerns a choice of, changes in, or management of Doom's modules");
+@include tag-tooltip("=navigation", "Concerns getting around in Doom");
+@include tag-tooltip("=noevil", "Concerns environments where Evil (vim emulation) is disabled");
+@include tag-tooltip("=not-doom", "Concerns an environment or tool that is unrelated to Doom");
+@include tag-tooltip("=packages", "Concerns managing packages or configuring them");
+@include tag-tooltip("=performance", "Concerns Doom's startup and runtime performance");
+@include tag-tooltip("=plugin", "Concerns particular third party plugins");
+@include tag-tooltip("=projects", "Concerns Doom's project management system (projectile)");
+@include tag-tooltip("=security", "Concerns Doom's impact on or protection of the user's privacy and security");
+@include tag-tooltip("=shell", "Concerns the user's shell environment and configuration");
+@include tag-tooltip("=snippets", "Concerns yasnippet and your snippets library, and management thereof");
+@include tag-tooltip("=spellchecker", "Concerns Doom's spellchecker (either spell-fu or flyspell)");
+@include tag-tooltip("=stability", "Concerns crashes and freezing while using Doom");
+@include tag-tooltip("=system", "Concerns your operating system or configuration thereof");
+@include tag-tooltip("=themes", "Concerns themes and faces, including the customization thereof");
+@include tag-tooltip("=ui", "Concerns the user interface; windows and frames, and the management thereof");
+@include tag-tooltip("=ux", "Concerns the user's experience");
+@include tag-tooltip("=workflow", "Concerns the process of using Doom and its features");
+@include tag-tooltip("=workspaces", "Concerns the workspaces feature of Doom");
+
+// Moderation tags
+@include tag-tooltip("=todo", "This topic needs work");
+@include tag-tooltip("=priority", "Needs attention ASAP");
+@include tag-tooltip("=heated", "This thread has gotten heated; keep an eye on it");
+
+// Version tags
+@for $i from 2 through 4 {
+    @for $j from 0 through 9 {
+        @for $k from 0 through 9 {
+            @include tag-tooltip("=v#{$i}#{$j}#{$k}", "Relevant specifically to Doom Emacs v#{$i}.#{$j}.#{$k}")
+            @include tag-color(("=v#{$i}#{$j}#{$k}"), var(--tag-stale), 10);
+        }
+    }
+}

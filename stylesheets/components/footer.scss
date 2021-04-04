@@ -1,0 +1,43 @@
+.myfooter {
+    background-color: var(--header_background);
+    .wrap {
+        padding: 0.8em 1.2em;
+        display: flex;
+        align-items: center;
+    }
+    .contents, .social { flex: 2 auto; }
+    .social {
+        width: 50px;
+        order: 2;
+        font-size: 170%;
+        justify-content: flex-end;
+        display: flex;
+        flex: 3 40px;
+        align-items: stretch;
+        a { margin-left: 0.75em; color: var(--primary-low-mid); opacity: 0.6; }
+        a:hover { opacity: 1.0; }
+        a.discord:hover { color: var(--discord) !important; }
+        a.twitter:hover { color: var(--twitter) !important; }
+        a.github:hover  { color: var(--primary) !important; }
+        a.youtube:hover { color: var(--danger) !important; }
+    }
+    .d-icon-heart { color: #c678dd; }
+    .first { font-weight: bold; }
+}
+
+// Let bottom of pages breathe
+#main-outlet { padding-bottom: 2em; }
+
+@include breakpoint(mobile-extra-large) {
+    .myfooter {
+        .wrap .contents { width: 175px; }
+    }
+}
+@media screen and (min-width: 767px) {
+    footer.topic-list-bottom {
+        margin-bottom: -3em;
+        padding: 0.85em 0.75em 0.45em;
+        background-color: var(--header_background);
+        .footer-message { text-align: center; }
+    }
+}

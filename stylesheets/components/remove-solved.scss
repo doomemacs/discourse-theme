@@ -1,0 +1,24 @@
+// We use tags for this
+.select-kit-collection .tag-drop {
+    &[data-value=solved], &[data-value=unsolved] { display: none; }
+}
+// .solved-status-filter { display: none; }
+// .topic-statuses span[title="This topic has a solution"] { display: none; }
+
+.accepted-answer {
+    svg.accepted {
+        padding-right: 0.22em;
+        font-size: 160%;
+        margin-top: -0.1em;
+        vertical-align: middle;
+    }
+    div.title {
+        font-size: 125%;
+        font-weight: bold;
+        padding: 1em 0.8em !important;
+        background: mix($secondary, $success, 75%) !important;
+        border-left: 4px solid var(--success) !important;
+    }
+    .quote-toggle { display: none; }
+    blockquote { display: none; }
+}

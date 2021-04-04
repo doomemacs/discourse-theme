@@ -1,0 +1,23 @@
+article .cooked, .d-editor-preview {
+    ul + hr, ol + hr { margin-top: 25px; }
+    hr + h1 { margin-top: 0; }
+    h1 + h2, h2 + h3, h3 + h4, h4 + h5, h5 + h6 { margin-top: 10px; }
+    p + h1, ul + h1, ol + h1, div + h1, blockquote + h1 { margin-top: 31px; }
+    h1 + .md-table, summary + .md-table { margin-top: 0; }
+    h1 {
+        padding-top: 12px;
+        margin-top: 28px;
+        margin-bottom: 8px;
+    }
+    h2 {
+        margin: 28px 0 8px;
+        font-weight: 600;
+    }
+    h3 {
+        margin: 22px 0 6px;
+        font-style: italic;
+    }
+    h1,h2 { font-weight: bolder; }
+    h3,h4,h5,h6 { font-weight: bold; }
+    h4,h5,h6 { font-variant: small-caps; }
+}

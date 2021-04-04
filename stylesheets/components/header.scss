@@ -1,0 +1,28 @@
+.custom-header-links .headerLink {
+    a, a:link, a:visited {
+        color: var(--primary);
+    }
+}
+
+.d-header-wrap {
+    border-left: 4px solid var(--highlight);
+}
+
+.discourse-no-touch .d-header-icons {
+    .icon {
+        transition: none;
+        svg {
+            color: var(--primary) !important;
+        }
+        &:hover {
+            background-color: var(--highlight);
+            svg {
+                color: var(--secondary) !important;
+            }
+        }
+    }
+}
+
+.menu-item:first-of-type > a {
+    font-weight: bold;
+}

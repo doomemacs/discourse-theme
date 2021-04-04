@@ -1,0 +1,7 @@
+
+// Hide tags that are redundant with their containing category. Since tags have
+// more search-flexibility, we don't want to sacrifice one or the other.
+@include tag-hide-in-category(("learn-elisp"), "emacs-lisp");
+@include tag-hide-in-category(("learn-config"), "config");
+@include tag-hide-in-category(("learn-workflow"), "workflow");
+@include tag-hide-in-category(("learn" "learn-beginners" "learn-cli" "learn-workflow" "learn-config" "learn-elisp"), "guide");

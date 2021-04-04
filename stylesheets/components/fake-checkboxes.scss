@@ -1,0 +1,7 @@
+// Using our blank :nay: emoji as a makeshift checkbox, since we can't install
+// the checklist plugin on our hosted instance.
+img.emoji-custom[title=":nay:"] {
+    outline: 1px solid var(--primary);
+    outline-offset: -1px;
+    opacity: 0.3;
+}

@@ -1,0 +1,64 @@
+
+.custom-wizard {
+    background-color: var(--header_background);
+    font-size: 1em;
+
+    // Global
+    .wizard-column {
+        box-shadow: none;
+        border-radius: 0;
+        border: 0;
+        .wizard-column-contents {
+            padding: 1.8em;
+        }
+    }
+
+    hr {
+        position: relative;
+        left: -35px;
+        width: 112%;
+        height: 35px;
+        border: none;
+        background-color: var(--header_background);
+    }
+
+
+    // Fixes
+    .wizard-field.checkbox-field {
+        margin-bottom: 0;
+        input {
+            margin-bottom: 0;
+            margin-right: 0.6em;
+        }
+        label, input {
+            cursor: pointer;
+        }
+    }
+
+    .wizard-field .field-description p {
+        line-height: 1.5 !important;
+        margin-block-start: 17.6px;
+        margin-block-end: 17.6px;
+    }
+
+    .wizard-step-contents {
+        li { margin: 0.8em 0; }
+    }
+
+    .d-editor-preview-wrapper {
+        margin-top: 0;
+        padding-top: 0;
+        background-color: var(--header_background);
+    }
+
+
+    // Per-field tweaks
+    .step_1_field_8 .wizard-field-composer {
+        .d-editor {
+            min-height: 400px;
+            textarea {
+                min-height: calc(400px - 32px);
+            }
+        }
+    }
+}

@@ -1,0 +1,20 @@
+// user-avatars.scss
+
+// Square-ish avatars, instead of circles
+img.avatar { border-radius: 6px; }
+
+// Group badges are too big, they consume a quarter of the user's avatar; shrink
+// them a bit.
+.topic-avatar .avatar-flair {
+    bottom: -3px !important;
+    right: -4px !important;
+    width: 16px !important;
+    height: 16px !important;
+    font-size: 80% !important;
+}
+// Make avatars and their badges more visible against similar backgrounds
+.avatar, .avatar-flair {
+    border: 1px solid var(--secondary);
+}
+#user-card .avatar-flair    { border: 5px solid var(--header_background); }
+.topic-avatar .avatar-flair { border: 3px solid var(--secondary); }

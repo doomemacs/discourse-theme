@@ -1,0 +1,43 @@
+// Numbered titles for ToC'ed posts
+article .d-toc-cooked, .d-editor-preview {
+    position: relative;
+    overflow: visible !important;
+    h1,h2,h3 {
+        position: relative;
+        &:before {
+            font: normal lighter 92% $monospace-font;
+            color: var(--heading-num-fg);
+            opacity: 0.5;
+            transition: opacity 0.38s ease;
+            position: absolute;
+            left: -89px;
+            bottom: 0;
+            width: 75px;
+            text-align: right;
+        }
+        &:hover:before { opacity: 0.9; }
+    }
+    h2,h3,h4,h5,h6 { color: var(--heading-num-fg); }
+
+    // Numerical counters before headings
+    counter-reset: h1counter;
+    h1 { counter-reset: h2counter; }
+    h2 { counter-reset: h3counter; }
+    h1:before {
+        content: counter(h1counter);
+        counter-increment: h1counter;
+    }
+    h2:before {
+        content: counter(h1counter) "." counter(h2counter);
+        counter-increment: h2counter;
+    }
+    h3:before {
+        content: counter(h1counter) "." counter(h2counter) "." counter(h3counter);
+        counter-increment: h3counter;
+        opacity: 0.3 !important;
+    }
+
+    & blockquote {
+        h1, h2, h3 { &:before { content: ""; } }
+    }
+}

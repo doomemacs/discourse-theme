@@ -1,0 +1,28 @@
+// Give code blocks more contrast and use monospace fonts,
+code, pre, .d-editor-input {
+    font-family: $monospace-font;
+    font-size: 92%;
+}
+code {
+    padding: 3px 3px 0;
+
+    // background-color: var(--code-inline-bg) !important;
+    &.hljs {
+        color: var(--code-inline-fg) !important;
+    }
+    &:not(.hljs) {
+        color: var(--code-inline-fg) !important;
+        padding: 2px 4px 0;
+        background-color: var(--code-inline-bg) !important;
+    }
+}
+.copy-codeblocks code {
+    padding: 9px;
+    margin-bottom: 2px;
+    border-left: 4px solid var(--code-border);
+    background-color: var(--code-bg) !important;
+}
+blockquote .copy-codeblocks code {
+    border-left: 4px solid var(--code-border);
+    background-color: var(--code-inline-bg) !important;
+}

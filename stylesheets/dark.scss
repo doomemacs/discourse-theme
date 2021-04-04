@@ -1,0 +1,8 @@
+/* dark.scss
+ *
+ * Styles meant specifically for dark themes.
+ */
+
+.nav-pills > li > a:not(.active):hover {
+	background-color: var(--header_background);
+}

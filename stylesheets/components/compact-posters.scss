@@ -1,0 +1,63 @@
+// More compact user list
+.topic-list td.posters {
+    width: 4em;
+    text-align: center;
+    padding-left: 2em;
+    a:nth-child(2), a:nth-child(3), a:nth-child(4), a:nth-child(5) { display: none; }
+    a:first-child { display: inline-block; }
+    a {
+        float: none;
+        display: inline-block;
+        z-index: 1;
+        transition: top 0.24s ease;
+        position: relative;
+        top: 0;
+        .avatar {
+            border-width: 3px;
+            background-color: var(--secondary);
+            margin-left: -22px;
+            transition: box-shadow 0.24s ease;
+            box-shadow: 0;
+        }
+        &:hover {
+            z-index: 99;
+            // Change opacity slightly to force a redraw of the element (so the
+            // new z-index can kick in)
+            opacity: 0.99;
+            top: -6px;
+            .avatar {
+                box-shadow: 0 5px 2px var(--header_background); // FIXME matches bg
+            }
+        }
+
+        &.group-maintainer, &.group-headhoncho, &.group-moderator, &.group-regular, &.group-supporter, &.group-sponsor {
+            position: relative;
+            &::before {
+                content: " ";
+                border: 3px solid var(--secondary);
+                border-radius: 10px;
+                width: 7px;
+                height: 7px;
+                display: block;
+                float: left;
+                position: absolute;
+                right: 23px;
+                top: 51px;
+            }
+        }
+        &.group-maintainer::before { background-color: #4078f2; }
+        &.group-headhoncho::before { background-color: #e74c3c; }
+        &.group-moderator::before  { background-color: #6272a4; }
+        &.group-regular::before    { background-color: #bd93f9; }
+        &.group-supporter::before  { background-color: #a0a0a0; }
+        &.group-sponsor::before    { background-color: #D4AF37; }
+    }
+    a:first-child .avatar.latest:not(.single) {
+        position: static;
+        border: 2px solid var(--secondary);
+        box-shadow: 0 0 2px 1px var(--highlight);
+    }
+}
+@include breakpoint(medium) {
+    .topic-list td.posters { width: auto; }
+}

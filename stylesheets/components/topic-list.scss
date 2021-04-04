@@ -1,0 +1,137 @@
+// Make topic title links easier to see!
+.link-top-line .title { font-weight: bold; }
+
+.shared-drafts.topic-list {
+    float: left;
+    position: relative;
+    z-index: 9;
+    .category-sidebar, .link-meta-data, .topic-excerpt { display: none; }
+    .topic-list-item {
+        background-color: var(--topic-draft-bg);
+    }
+}
+
+.custom-sidebar #list-area .show-more.has-topics .alert {
+    width: 100% !important;
+    position: static;
+    margin-bottom: 0;
+}
+
+.topic-list {
+    thead th.bulk-select {
+        padding-left: 1.5em !important;
+        padding-right: 0 !important;
+        width: 2.1em;
+    }
+    tbody td.bulk-select {
+        padding-left: 1.4em !important;
+        padding-right: 0.6em !important;
+    }
+
+    .discourse-tag, .badge-wrapper .badge-category {
+        font-size: $font-0;
+    }
+    .category-badge-icon {
+        font-size: $font-down-1;
+    }
+    .link-bottom-line, .link-meta-data {
+        display: flex;
+        justify-content: flex-start;
+        align-items: baseline;
+    }
+    .link-meta-data {
+        clear: both;
+        margin-top: -1px;
+        margin-left: -1px;
+    }
+    .link-bottom-line {
+        clear: both;
+        .badge-wrapper {
+            margin-right: 10px;
+            .category-name {
+                color: var(--primary-high);
+            }
+        }
+    }
+
+    .num {
+        width: auto;
+        padding: 0 14px 0 1px;
+        a {
+            font-weight: normal !important;
+            font-size: $font-down-2;
+            color: var(--primary-high);
+        }
+        &.activity {
+            svg { margin-right: 3px; }
+            a:hover { color: var(--highlight); }
+        }
+        &.activity, &.posts { a { padding: 0; } }
+        &.likes a { color: var(--love); }
+        &.posts a:hover { color: var(--primary); }
+    }
+
+    .discourse-tags {
+        display: flex;
+        margin: 2px 0 0 0;
+        @include breakpoint(mobile-extra-large) {
+            float: left;
+            clear: left;
+        }
+        .discourse-tag {
+            margin-left: 1px;
+            margin-right: 10px;
+            .tag-icon { margin-left: -2px; }
+        }
+    }
+
+    .topic-excerpt {
+        display: block;
+        padding-bottom: 1px;
+        margin-top: 2px;
+        line-height: 1.5;
+    }
+    .topic-excerpt .topic-excerpt-more {
+        color: var(--tertiary);
+    }
+    .svg-icon, .svg-icon-title {
+        width: 0.85em;
+    }
+
+    .topic-list-item {
+        transition: opacity 0.12s ease-in-out;
+        &:hover {
+            opacity: 1.0 !important;
+        }
+        .author {
+            text-align: center;
+            padding-left: 0.5em;
+        }
+        &.pinned {
+            background-color: var(--topic-pinned-bg);
+            border-bottom-color: var(--topic-pinned-border);
+        }
+        &.tag-help-wanted {
+            border-left: 4px solid var(--love);
+        }
+        &.tag-obsolete, &.tag-stale, &.tag-duplicate, &.tag-invalid {
+            opacity: 0.45;
+        }
+    }
+}
+
+// Checkbox and title are too close together
+.topic-statuses .d-icon-far-check-square { padding-right: 2px; }
+
+.nav-pills > li {
+    background-color: var(--header_background);
+    margin-right: 8px;
+    > a { color: var(--quaternary); }
+}
+
+.select-kit.dropdown-select-box.period-chooser .period-chooser-header h2.selected-name .top-date-string {
+    font-variant: small-caps;
+    font-feature-settings: "onum";
+    margin-left: 5px;
+    text-transform: lowercase;
+}

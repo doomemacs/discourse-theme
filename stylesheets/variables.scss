@@ -1,0 +1,37 @@
+// Colors
+$warning: #ecbe7b;
+
+$primary-low: dark-light-choose(darken($secondary, 10%), lighten($secondary, 10%));
+$header-background-alt: lighten($header-background, 8%);
+
+
+// Fonts
+$monospace-font: 'Fira Code', 'Fira Mono', Consolas, Menlo, Monaco, 'Lucida Console', 'Liberation Mono', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Courier New', monospace;
+
+
+// Colors
+$topic-draft-bg: mix($header-background, $secondary, 30%);
+$topic-pinned-bg: mix($highlight, $secondary, 4%);
+$topic-pinned-border: mix($highlight, $primary-low, 8%);
+
+$quote-bg: desaturate(mix($secondary, $highlight, 75%), 15%);
+$quote-border: dark-light-choose($quote-bg, lighten($header-background, 13%));
+$quote-border-alt: dark-light-choose(darken($quote-border, 8%), lighten($quote-border, 10%));
+
+$category-box-bg: mix($header-background, $secondary);
+
+$kbd-bg: $header-background;
+$kbd-border: dark-light-choose(darken($header-background, 45%), lighten($header-background, 30%));
+
+$heading-num-fg: mix($primary, $quaternary, 45%);
+
+$tag-solved: mix($success, $primary, 40%);
+$tag-warn: mix($warning, $primary);
+$tag-abort: mix($danger, $primary);
+$tag-pending: mix($highlight, $primary, 40%);
+$tag-stale: desaturate($primary-high, 100%);
+$tag-attention: mix($love, $primary, 65%);
+$tag-duplicate: desaturate($primary-high, 100%);
+$tag-project: mix($highlight, $primary, 70%);
+
+$tag-tooltip-bg: darken($header-background, 8%);

@@ -1,0 +1,119 @@
+// TODO For the love of god refactor this
+
+$warning: #ecbe7b;
+
+// Colors
+$quote-bg: desaturate(mix($secondary, $highlight, 75%), 15%);
+$quote-border: dark-light-choose($quote-bg, lighten($header-background, 13%));
+$quote-border-alt: dark-light-choose(
+    darken($quote-border, 8%),
+    lighten($quote-border, 10%)
+);
+
+$primary-low: dark-light-choose(
+    darken($secondary, 10%),
+    lighten($secondary, 10%)
+);
+$header-background-alt: lighten($header-background, 8%);
+
+:root {
+    --header-bg: #{$header-background};
+    --header-bg-alt: #{lighten($header-background, 6%)};
+
+    --heading-num-fg: #{mix($primary, $quaternary, 45%)};
+
+    --warning: #{$warning};
+    --primary-low: #{dark-light-choose(
+            darken($secondary, 10%),
+            lighten($secondary, 10%)
+        )};
+
+    --topic-draft-bg: #{mix($header-background, $secondary, 30%)}; // TODO
+    --topic-pinned-bg: #{mix($highlight, $secondary, 4%)}; // TODO
+    --topic-pinned-border: #{desaturate(mix($highlight, $primary-low, 16%), 10%)}; // TODO
+
+    --quote-bg: #{desaturate(mix($secondary, $highlight, 75%), 15%)};
+    --quote-border: #{dark-light-choose(
+            $quote-bg,
+            lighten($header-background, 13%)
+        )};
+    --quote-border-2: #{dark-light-choose(
+            darken($quote-bg, 8%),
+            lighten($header-background, 23%)
+        )};
+
+    --category-box-bg: #{mix($header-background, $secondary)};
+
+    // --code-inline-bg: #{dark-light-choose(lighten($header-background, 7%), lighten($header-background, 4%))};
+    --code-bg: #{dark-light-choose(
+            lighten($header-background, 8%),
+            $header-background
+        )};
+    --code-fg: #{dark-light-choose(
+            lighten($primary, 15%),
+            darken(mix($primary, $highlight, 82%), 9%)
+        )};
+    --code-bg-1: #{dark-light-choose(
+            lighten($header-background, 7%),
+            lighten($header-background, 4%)
+        )};
+    --code-fg-1: #{dark-light-choose(
+            lighten($primary, 15%),
+            darken(mix($primary, $highlight, 82%), 9%)
+        )};
+    --code-border: #{dark-light-choose(
+            darken($header-background, 4%),
+            darken($header-background, 4%)
+        )};
+    --code-inline-bg: #{dark-light-choose(
+            lighten($header-background, 3%),
+            darken($header-background, 1%)
+        )};
+    --code-inline-fg: #{dark-light-choose(
+            lighten($primary, 15%),
+            darken(mix($primary, $highlight, 82%), 9%)
+        )};
+
+    --sidebar-tip-bg: #{darken($header_background, 2%)};
+
+    --tip-bg: #{mix($secondary, $highlight, 85%)};
+    --tip-emoji-bg: #{mix($secondary, $highlight, 75%)};
+
+    --tip-bg-1: #{mix($secondary, $highlight, 62%)};
+    --tip-emoji-bg-1: #{mix($secondary, $highlight, 42%)};
+
+    --link-fg: #{mix($primary, $tertiary, 48%)};
+    --link-bg: #{rgba($highlight, 0.095)};
+    --link-underline: #{rgba($highlight, 0.18)};
+    --link-bg-hover: #{rgba($highlight, 0.2)};
+    --link-underline-hover: #{rgba($highlight, 0.4)};
+
+    --kbd-bg: var(--header_background);
+    --kbd-border: #{dark-light-choose(
+            darken($header-background, 25%),
+            lighten($header-background, 30%)
+        )};
+
+    --tag-solved: #{mix($success, $primary, 40%)};
+    --tag-warn: #{mix($warning, $primary)};
+    --tag-abort: #{mix($danger, $primary)};
+    --tag-pending: #{mix($highlight, $primary, 40%)};
+    --tag-stale: #{desaturate($primary-high, 100%)};
+    --tag-attention: #{mix($love, $primary, 65%)};
+    --tag-duplicate: #{desaturate($primary-high, 100%)};
+    --tag-project: #{mix($highlight, $primary, 70%)};
+    --tag-tooltip-bg: #{darken($header-background, 8%)};
+}
+
+// These colors are auto-generated from $primary, but the choices
+// are too yellow so I tweak them myself.
+// :root {
+//     --primary-very-low: #1e2029;
+//     --primary-medium: #bd93f9;
+//     --primary-low-mid: var(--primary-medium);
+//     --primary-high: #8d93b5;
+//     --primary-or-primary-low-mid: #f1fa8c;
+//     --tertiary-low: #6B43A4;
+
+//     --header_primary-low-mid: var(--primary-high);
+// }

@@ -1,0 +1,144 @@
+.discourse-tag {
+    padding-left: 0;
+    background: none;
+    &, &:visited, &:hover {
+        color: var(--primary-high);
+        &.bullet::before { background-color: var(--primary-high); }
+    }
+}
+
+@include tags((
+    "=backlog"
+    "=breaking-change"
+    "=community"
+    "=doom-snippets"
+    "=doom-themes"
+    "=duplicate"
+    "=event"
+    "=help-wanted"
+    "=status"
+    "=incomplete"
+    "=invalid"
+    "=nofix"
+    "=obsolete"
+    "=waiting"
+    "=poll"
+    "=priority"
+    "=release"
+    "=solved"
+    "=stale"
+    "=todo"
+    "=priority"
+    "=heated"
+    "=unknown"
+    "=website"
+    "=wontfix"
+    "=workaround"
+    "=low-priority"
+    "=high-priority"
+    "=urgent"
+
+    "=verified"
+    "=unconfirmed"
+    "=on-hold"
+    "=unreviewed"
+    "=closed"
+)) { &.bullet::before { display: none; } }
+
+@include tags(("=backlog"
+               "=duplicate"
+               "=solved"
+               "=invalid"
+               "=incomplete"
+               "=nofix"
+               "=obsolete"
+               "=stale"
+               "=wontfix"
+               "=workaround"
+               "=unknown")) {
+    background-color: var(--header_background);
+    padding: 0 8px;
+    border-radius: 0 2px 2px 0;
+    border: 1px solid var(--primary-medium);
+}
+
+@include tags(("=verified" "=unconfirmed" "=on-hold" "=closed" "=unreviewed")) {
+    color: var(--secondary) !important;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 0 6px;
+    border-radius: 2px 0 0 2px;
+    border: 1px solid var(--primary-medium);
+    .discourse-tags &, .search-category & { order: 2; }
+}
+@include tags(("=verified" "=unconfirmed" "=on-hold" "=closed")) {
+    .discourse-tags & {
+        margin-right: -2px !important;
+    }
+}
+@include tags(("=verified"))    { background-color: var(--tag-solved); }
+@include tags(("=unconfirmed")) { background-color: var(--tag-warn); }
+@include tags(("=on-hold"))     { background-color: var(--tag-abort); }
+@include tags(("=unreviewed"))  { background-color: var(--header_background); color: var(--primary-medium) !important; }
+@include tags(("=closed"))      { background-color: var(--primary-medium); }
+
+
+// Version tags
+// Announcement tags
+@include tag-color(("=status" "=community" "=event" "=breaking-change" "=release" "=external" "=poll"), var(--love), 3);
+@include tag-color(("^=news-"), var(--quaternary), 5);
+// Issue priority
+@include tag-color(("=low-priority"),  var(--tag-stale), 10) { font-weight: bold; text-transform: uppercase; }
+@include tag-color(("=high-priority"), var(--tag-warn),  10) { font-weight: bold; text-transform: uppercase; }
+@include tag-color(("=urgent"),        var(--tag-abort), 10) { font-weight: bold; text-transform: uppercase; }
+// Issue status tags
+// @include tag-color(("=resolved"),    var(--tag-solved),  2);
+// @include tag-color(("=verified"),    var(--tag-solved),  2);
+// @include tag-color(("=unconfirmed"), var(--tag-warning), 2);
+// @include tag-color(("=on-hold"),     var(--tag-warning), 2);
+// @include tag-color(("=closed"),      var(--tag-stale),   2);
+// Issue sub-status tags
+@include tag-color(("=solved" "=workaround"), var(--tag-solved), 3);
+@include tag-color(("=nofix" "=wontfix" "=unknown"), var(--tag-abort), 3);
+@include tag-color(("=waiting" "=todo"), var(--tag-pending), 3);
+@include tag-color(("=incomplete"), var(--tag-warn), 3);
+@include tag-color(("=help-wanted" "=backlog"), var(--tag-attention), 3);
+@include tag-color(("=stale" "=obsolete"), var(--tag-stale), 4);
+
+// Issue type tags
+@include tag-color(("=bug" "=upstream" "=suggestion" "=local" "=not-a-bug" "=question"), var(--primary), 5);
+@include tag-color(("=faq"), var(--tag-attention), 5);
+// @include tag-color(("=duplicate" "=invalid"), desaturate($primary-high, 100%), 5);
+// Emacs contexts
+@include tag-color(("^=emacs2" "=native-comp" "=pgtk" "=tty" "=gui" "=exwm"), var(--primary-high), 6);
+@include tag-color(
+    (// Operating systems
+     "=antergos" "=arch-linux" "=debian" "=gentoo" "=guix" "=kali" "=macos" "=manjaro" "=mint"
+     "=nixos" "=opensuse" "=ubuntu" "=void-linux" "=windows" "=windows-wsl" "=linux"
+     // Programming languages
+     "=agda" "=c" "=clojure" "=common-lisp" "=cpp" "=crystal" "=csharp" "=dart" "=elixir"
+     "=elm" "=emacs-lisp" "=erlang" "=ess" "=faust" "=fsharp" "=fstar" "=gdscript" "=go"
+     "=haskell" "=htmlcss" "=hy" "=idris" "=java" "=javascript" "=json" "=julia" "=kotlin"
+     "=latex" "=ledger" "=lua" "=markdown" "=nim" "=nix" "=ocaml" "=org" "=perl" "=php"
+     "=plantuml" "=python" "=racket" "=raku" "=ruby" "=rust" "=scala" "=scheme" "=sh" "=swift"
+     "=yaml"
+     // Tools
+     "=docker" "=org-roam" "=kubernetes" "=reactjs" "=vuejs" "=angularjs" "=jupyter" "=lsp"
+     // Projects
+     "=doom-themes" "=doom-snippets" "=website"
+     ), var(--quaternary), 6);
+
+// Project tags
+@include tag-color(("=doom-snippets" "=doom-themes" "=website"), var(--tag-project), 2) {
+    font-weight: bold;
+}
+
+// Moderation tags
+@include tag-color(("=priority" "=heated"), var(--danger), 1) {
+    font-weight: bold;
+    text-transform: uppercase;
+}
+@include tag-color(("=todo"), var(--warning), 1) {
+    font-weight: bold;
+    text-transform: uppercase;
+}

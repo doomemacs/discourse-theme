@@ -1,0 +1,9 @@
+// Larger search results popup
+.search-menu .menu-panel {
+    width: 560px !important;
+}
+
+// Higher contrast from search excerpts on search page
+.fps-result .blurb {
+    color: var(--primary);
+}

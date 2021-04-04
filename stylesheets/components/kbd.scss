@@ -1,0 +1,6 @@
+kbd {
+    border-color: var(--kbd-border);
+    background-color: var(--kbd-bg) !important;
+}
+p, li { kbd { display: initial; position: relative; bottom: 1px; } }
+table kbd { display: inline-flex; }

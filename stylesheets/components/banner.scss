@@ -1,0 +1,22 @@
+// banner.scss
+//
+// For changes to the banner region of the website, where modal alerts and the
+// banner post are displayed.
+
+.alert.alert-info { padding: 1em 1.4em; }
+#banner {
+    padding: 0.35em 1.4em;
+
+    // Don't constrain the banner to a max-size. It's important that the banner
+    // be completely visible, to reduce the possibility of folks ignoring it.
+    max-height: none;
+    @include breakpoint(mobile-extra-large) {
+        height: auto;
+        [data-theme-image] { display: none; }
+    }
+    > button.close { display: none; }
+}
+
+// Make certain things easier to see, like headings or alerts
+.alert.alert-info, #banner { font-size: 115%; }
+#discourse-modal .alert.alert-info { font-size: 95%; }

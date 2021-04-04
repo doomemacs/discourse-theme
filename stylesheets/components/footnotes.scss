@@ -1,0 +1,14 @@
+.inline-footnotes button.expand-footnote {
+    // padding: 0px 0.4em;
+    // font-size: 90%;
+}
+
+#footnote-tooltip {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+    .footnote-tooltip-content {
+        padding: 1em;
+        color: var(--primary);
+        > :first-child { margin-top: 0; }
+        > :last-child  { margin-bottom: 0; }
+    }
+}

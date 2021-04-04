@@ -1,0 +1,50 @@
+.discourse-tags, .search-results {
+    // .discourse-tags {
+    //     a { order: 1; }
+    // }
+    // Ensures tags can be reordered via CSS
+    &, .search-results .topic .search-category {
+        display: flex !important;
+        justify-content: flex-start;
+        align-items: baseline;
+    }
+    a.discourse-tag {
+        order: 9999;
+        // Remove Discourse styling "tags" like tags
+        -webkit-mask-image: none;
+    }
+}
+
+
+/////
+@mixin tags($names) {
+    @each $name in $names {
+        .discourse-tag[data-tag-name#{$name}] { @content; }
+    }
+}
+
+@mixin tag-color($names, $color, $order: 9999) {
+    @include tags($names) {
+        color: $color !important;
+        &.bullet::before { background-color: $color; }
+        .discourse-tags &, .search-category & { order: $order; }
+        @content;
+    }
+}
+
+@mixin tag-tooltip($name, $desc) {
+    .hashtag[href$="#{"/tag/" + str-slice($name, str-index($name, "=") + 1)}"] {
+        &:hover:after { content: $desc; display: block; }
+    }
+    @include tags(($name)) {
+        &:hover:after { content: $desc; display: block; }
+    }
+}
+
+@mixin tag-hide-in-category($slugs, $tag) {
+    @each $slug in $slugs {
+        .category-#{$slug} .discourse-tag[data-tag-name=#{$tag}] { display: none; }
+    }
+}
+
+
