@@ -74,13 +74,23 @@ $header-background-alt: lighten($header-background, 8%);
             darken(mix($primary, $highlight, 82%), 9%)
         )};
 
-    --sidebar-tip-bg: #{darken($header_background, 2%)};
+    --sidebar-tip-bg: #{darken($header_background, 3%)};
 
-    --tip-bg: #{mix($secondary, $highlight, 85%)};
-    --tip-emoji-bg: #{mix($secondary, $highlight, 75%)};
+    --tip-bg: #{rgba($highlight, 0.75)};
+    --tip-border: #{rgba($highlight, 0.1)};
 
-    --tip-bg-1: #{mix($secondary, $highlight, 62%)};
-    --tip-emoji-bg-1: #{mix($secondary, $highlight, 42%)};
+    --tip-bg-warning: #{rgba($warning, 0.25)};
+    --tip-border-warning: #{rgba($warning, 0.1)};
+
+    --tip-bg-pushpin: #{rgba($primary-medium, 0.32)};
+    --tip-border-pushpin: #{rgba($primary-medium, 0.15)};
+
+    --tip-bg-clock: #{rgba($love, 0.25)};
+    --tip-border-clock: #{rgba($love, 0.1)};
+
+    --tip-bg-thought: #{rgba($success, 0.3)};
+    --tip-border-thought: #{rgba($success, 0.1)};
+
 
     --link-fg: #{mix($primary, $tertiary, 48%)};
     --link-bg: #{rgba($highlight, 0.095)};

@@ -1,0 +1,19 @@
+
+.notice {
+    &.notice-warning {
+        background-color:  var(--tip-bg-warning);
+        border-left-color: var(--tip-border-warning);
+    }
+    &.notice-clock2 {
+        background-color:  var(--tip-bg-clock);
+        border-left-color: var(--tip-border-clock);
+    }
+    &.notice-pushpin {
+        background-color:  var(--tip-bg-pushpin);
+        border-left-color: var(--tip-border-pushpin);
+    }
+    &.notice-thought_balloon {
+        background-color:  var(--tip-bg-thought);
+        border-left-color: var(--tip-border-thought);
+    }
+}

@@ -42,16 +42,13 @@ body.custom-sidebar {
         }
         .notice {
             background-color: var(--sidebar-tip-bg);
-            border-left-width: 38px;
+            border-left-width: 40px;
             border-left-color: transparent;
-            &:before {
-                top: 1px;
-                left: -37px;
-                margin: 17px 9px;
-                width: 30px;
-                height: 30px;
-                background-size: 28px;
-                background-position: center center;
+            .notice-icon {
+                width: 30px !important;
+                height: 30px !important;
+                top: 18px;
+                left: -34px;
             }
         }
     }
