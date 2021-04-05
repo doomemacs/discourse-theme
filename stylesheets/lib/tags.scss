@@ -1,7 +1,8 @@
+.discourse-tags {
+    a { order: 1; }
+}
+
 .discourse-tags, .search-results {
-    // .discourse-tags {
-    //     a { order: 1; }
-    // }
     // Ensures tags can be reordered via CSS
     &, .search-results .topic .search-category {
         display: flex !important;
@@ -46,5 +47,3 @@
         .category-#{$slug} .discourse-tag[data-tag-name=#{$tag}] { display: none; }
     }
 }
-
-
