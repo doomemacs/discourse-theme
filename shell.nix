@@ -1,17 +1,18 @@
-{ pkgs ? import <nixpkgs> {} }:
+with import <nixpkgs> {};
 
-with pkgs;
-
-mkShell {
-  buildInputs = [ ruby ];
+stdenv.mkDerivation {
+  name = "doom-discourse-theme";
+  buildInputs = [ libffi ruby ];
   shellHook = ''
-    export PATH=./.gem/bin:"$PATH"
-    export GEM_HOME=./.gem
-    export SASS_PATH=.:./stylesheets
+    mkdir -p .gem
+    export GEM_HOME=$PWD/.gem
+    export GEM_PATH=$GEM_HOME
+    export PATH=$PWD/bin:$GEM_HOME/bin:$PATH
 
     if ! command -v discourse_theme >/dev/null; then
       echo "Installing discourse_theme CLI"
       gem install discourse_theme
     fi
   '';
+  hardeningDisable = [ "all" ];
 }
