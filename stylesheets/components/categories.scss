@@ -18,12 +18,12 @@
 
 
 tr .subcategories {
-    font-size: 120%;
-    padding-top: 0.1em;
+    font-size: 125%;
+    padding-top: 0.2em;
     padding-bottom: 0.1em;
     .subcategory {
         font-weight: bold;
-        margin-bottom: 0.3em;
+        margin-bottom: 0.4em;
         width: 11em;
         .category-badge-icon { margin-right: 0.275em; }
     }
@@ -31,4 +31,13 @@ tr .subcategories {
 
 .category .category-description {
     line-height: 1.5;
+}
+
+.category-list {
+    .featured-topic {
+        margin-top: 8px;
+    }
+    tbody .latest {
+        padding-bottom: 16px;
+    }
 }
