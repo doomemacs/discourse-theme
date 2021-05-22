@@ -44,11 +44,6 @@ svg.d-icon-check-square.accepted {
     &:after  { background: none; }
 }
 
-#banner { display: none; }
-body.navigation-categories, body.navigation-topics, body.tag-help-wanted {
-    #banner { display: block; }
-}
-
 // The status icons sometimes wrap when the title is too long or window too
 // small. Don't do that!
 .topic-statuses {

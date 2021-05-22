@@ -3,6 +3,11 @@
 // For changes to the banner region of the website, where modal alerts and the
 // banner post are displayed.
 
+#banner { display: none; }
+body.navigation-categories, body.navigation-topics, body.tag-help-wanted {
+    #banner { display: block; }
+}
+
 .alert.alert-info { padding: 1em 1.4em; }
 #banner {
     padding: 0.35em 1.4em;
@@ -15,6 +20,55 @@
         [data-theme-image] { display: none; }
     }
     > button.close { display: none; }
+
+}
+
+#banner {
+    h2 {
+        padding-top: 0.35em;
+    }
+    p {
+        max-width: 700px;
+        font-size: 120%;
+        line-height: 1.75;
+    }
+    abbr {
+        text-decoration: none;
+    }
+    ul, li {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    ul {
+        display: flex;
+        li {
+            flex-flow: column;
+            margin-right: 0.7em;
+            background-color: var(--secondary);
+            .emoji {
+                margin-top: -4px;
+                margin-left: -4px;
+                margin-right: 2px;
+                width: 26px;
+                height: 26px;
+            }
+            a[dir] {
+                display: block;
+                padding: 0.6em 0.75em;
+                font-weight: bold;
+                background: none;
+                border-bottom: none;
+            }
+            a[dir]:hover {
+                margin: 0;
+                cursor: pointer;
+                background-color: var(--highlight);
+                color: var(--secondary);
+                border-bottom: none;
+            }
+        }
+    }
 }
 
 // Make certain things easier to see, like headings or alerts
