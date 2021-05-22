@@ -16,13 +16,13 @@ body.custom-sidebar {
         width: 100%;
     }
     .category-sidebar .sticky-sidebar .cooked {
-        font-size: 95%;
+        > * { font-size: 90%; }
         > blockquote:first-child { display: none; }
         > :nth-child(2) { padding-top: 1em; }
         > blockquote:nth-child(2) { padding-top: 12px; }
         &:before {
-            content: "";
-            margin-top: 20px;
+            content: "About";
+            margin-top: -3px;
             width: 100%;
             justify-content: middle;
             float: left;
