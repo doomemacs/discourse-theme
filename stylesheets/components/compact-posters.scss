@@ -30,7 +30,7 @@
             }
         }
 
-        &.group-maintainer, &.group-headhoncho, &.group-moderator, &.group-regular, &.group-supporter, &.group-sponsor {
+        &.group-maintainer, &.group-headhoncho, &.group-moderator, &.group-regular, &.group-sponsor {
             position: relative;
             &::before {
                 content: " ";
@@ -45,12 +45,11 @@
                 top: 51px;
             }
         }
-        &.group-maintainer::before { background-color: #4078f2; }
-        &.group-headhoncho::before { background-color: #e74c3c; }
-        &.group-moderator::before  { background-color: #6272a4; }
-        &.group-regular::before    { background-color: #bd93f9; }
-        &.group-supporter::before  { background-color: #a0a0a0; }
-        &.group-sponsor::before    { background-color: #D4AF37; }
+        &.group-maintainer::before { background-color: #a9a1e1; }
+        &.group-headhoncho::before { background-color: #ff6c6b; }
+        &.group-moderator::before  { background-color: #c678dd; }
+        &.group-regular::before    { background-color: #51afef; }
+        &.group-sponsor::before    { background-color: #ECBE7B; }
     }
     a:first-child .avatar.latest:not(.single) {
         position: static;
