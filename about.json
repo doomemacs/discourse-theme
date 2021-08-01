@@ -71,6 +71,19 @@
 			"danger": "D95468",
 			"success": "8BD49C",
 			"love": "E27E8D"
+		},
+		"doom-nord": {
+			"primary": "eceff4",
+			"primary-low": "eceff4",
+			"secondary": "2e3440",
+			"tertiary": "88c0d0",
+			"quaternary": "8fbcbb",
+			"header_background": "3b4252",
+			"header_primary": "e5e9f0",
+			"highlight": "81a1c1",
+			"danger": "bf616a",
+			"success": "a3be8c",
+			"love": "b48ead"
 		}
 	}
 }
