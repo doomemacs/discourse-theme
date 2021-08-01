@@ -13,7 +13,7 @@ later.
   + [X] doom-one
   + [X] doom-dracula
   + [X] doom-city-lights
-  + [ ] doom-nord
+  + [x] doom-nord
 + Light themes
   + [X] doom-one-light
   + [ ] doom-flatwhite
