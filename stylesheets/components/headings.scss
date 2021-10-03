@@ -21,3 +21,16 @@ article .cooked, .d-editor-preview {
     h3,h4,h5,h6 { font-weight: bold; }
     h4,h5,h6 { font-variant: small-caps; }
 }
+
+// Move anchor to end of heading, because right side is being used for outline
+// numbers and by default they overlap.
+.d-toc-post-heading {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+
+    .anchor {
+        order: 9999;
+        margin-left: 1.25em;
+    }
+}

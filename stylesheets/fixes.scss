@@ -54,19 +54,7 @@ svg.d-icon-check-square.accepted {
     svg { margin-top: -3px; }
 }
 
-// More visible pre-header anchor
-body {
-    .d-editor-preview, .cooked {
-        h1,h2,h3,h4,h5,h6 {
-            &:hover a.anchor:before {
-                content: "#";
-                color: var(--primary-medium);
-            }
-        }
-    }
-}
-
-// Don't let uses suppress the unformatted code detection warning modal.
+// Don't let users suppress the unformatted code detection warning modal.
 label[for=ucd_do-not-show-again] {
     display: none;
 }
