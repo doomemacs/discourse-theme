@@ -1,14 +1,12 @@
-// Give code blocks more contrast and use monospace fonts,
-code, pre, .d-editor-input {
-    font-family: $monospace-font;
-    font-size: 92%;
-}
+// code.scss
+
 code {
     padding: 3px 3px 0;
 
-    // background-color: var(--code-inline-bg) !important;
     &.hljs {
         color: var(--code-inline-fg) !important;
+        // Don't set background here, it's overridden by hljs and should be
+        // corrected there.
     }
     &:not(.hljs) {
         color: var(--code-inline-fg) !important;

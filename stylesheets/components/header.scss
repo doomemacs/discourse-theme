@@ -1,8 +1,7 @@
-.custom-header-links .headerLink {
-    a, a:link, a:visited {
-        color: var(--primary);
-    }
-}
+// header.scss
+//
+// For the top-menubar containing the logo, "Get Help" button, and core
+// navigational buttons.
 
 .d-header-wrap {
     border-left: 4px solid var(--highlight);

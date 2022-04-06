@@ -25,19 +25,11 @@
     .first { font-weight: bold; }
 }
 
-// Let bottom of pages breathe
+// Let the bottom of pages breathe.
 #main-outlet { padding-bottom: 2em; }
 
 @include breakpoint(mobile-extra-large) {
     .myfooter {
         .wrap .contents { width: 175px; }
-    }
-}
-@media screen and (min-width: 767px) {
-    footer.topic-list-bottom {
-        margin-bottom: -3em;
-        padding: 0.85em 0.75em 0.45em;
-        background-color: var(--header_background);
-        .footer-message { text-align: center; }
     }
 }

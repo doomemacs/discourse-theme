@@ -1,8 +1,11 @@
 /* dark.scss
  *
- * Styles meant specifically for dark themes.
+ * Styles meant specifically for dark color schemes.
  */
 
 .nav-pills > li > a:not(.active):hover {
 	background-color: var(--header_background);
 }
+
+// Header has a drop shadow normally. Looks very weird with our colors, so...
+.d-header { box-shadow: none; }

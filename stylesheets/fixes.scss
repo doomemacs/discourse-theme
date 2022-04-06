@@ -7,18 +7,16 @@
 // Full-width tables make for better visual consistency
 .md-table table { width: 100%; }
 
-// DiscoTOC: the ToC adds padding to the top of the post. Remove this!
-.d-toc-cooked [data-theme-toc="true"] + p { margin-top: 0; }
-
-// Remove unchecked box next to pinned/unlisted topics (if enabled). If
-// it's been pinned or unlisted, the issue should not be considered an unsolved
+// Remove unchecked box next to pinned/unlisted topics (if enabled). If it's
+// been pinned or unlisted, the issue should not be considered an unsolved
 // problem.
 .topic-status[title="This topic is pinned for you; it will display at the top of its category"],
 .topic-status[title="This topic is unlisted; it will not be displayed in topic lists, and can only be accessed via a direct link"] {
     & + .topic-status[title="This topic has no solution"] { display: none; }
 }
 
-// The solution plugin colors its buttons an ugly, theme-agnostic "green".
+// The "Solution" button and icons are an ugly and theme-agnostic green.
+// TODO Upstream this to discourse-solved?
 svg.d-icon-check-square.accepted {
     color: var(--success);
 }
@@ -26,22 +24,6 @@ svg.d-icon-check-square.accepted {
     .unaccepted:hover, .accepted, .accepted-text {
         .d-icon, .d-button-label, .accepted-label { color: var(--success); }
     }
-    // .double-button:hover button {
-    //     color: var(--love) !important;
-    // }
-    // svg.d-icon-thumbs-up {
-    //     position: relative;
-    //     top: -2px;
-    // }
-}
-
-// Header has a drop shadow normally. Looks very weird with our colors, so...
-.d-header { box-shadow: none; }
-
-// Get rid of ugly gradients on the admin menu bar.
-.admin-controls nav {
-    &:before { background: none; }
-    &:after  { background: none; }
 }
 
 // The status icons sometimes wrap when the title is too long or window too
@@ -50,11 +32,67 @@ svg.d-icon-check-square.accepted {
     white-space: nowrap;
 }
 
-.report-an-error-or-misbehavior-in-doom-emacs-menu-link {
-    svg { margin-top: -3px; }
+// Don't let users suppress the unformatted code detection warning modal. They
+// should fix the issue, not ignore it.
+label[for=ucd_do-not-show-again] {
+    display: none !important;
 }
 
-// Don't let users suppress the unformatted code detection warning modal.
-label[for=ucd_do-not-show-again] {
+// We have a number of custom, user-fields (for social media and opting into
+// sponsorship perks). These have no business being part of the sign-up form, so
+// hide them!
+.create-account .user-fields {
     display: none;
+}
+
+// Hide the category bullets. Why not set category style to "none", instead?
+// Because when set to "none", we can't change a category's color, which affects
+// the category icon provided by our "Category icons" component.
+.badge-wrapper.bullet {
+    .badge-category-bg, .badge-category-parent-bg { display: none; }
+}
+
+// The Category Sidebar component will draw two duplicate sidebars when shared
+// drafts are displayed in a category's topic list.
+.shared-drafts.topic-list .category-sidebar {
+    display: none;
+}
+
+// There is too much of a gap between the main container and the top of the
+// page/the homepage banner.
+#main-outlet {
+    padding-top: 1em;
+}
+
+// The spacing between the topic-listing and navigational dropdowns is
+// inconsistent with other top-level element spacing.
+.navigation-container {
+    --nav-space: 0.5em;
+}
+.shared-drafts {
+    margin-top: 0.5em;
+}
+
+// Topic listings are 1px too wide at 100%.
+.custom-sidebar .contents > .topic-list .topic-list-body {
+    width: auto;
+}
+
+// Force markdown editor to use monospace fonts.
+.d-editor-input {
+  font-family: $monospaced_font;
+}
+
+// I add an extra column to the topic listing table header in
+// common/head_tag.html to fix an alignment issue in some topic lists, but it
+// causes a new issue for the shared-drafts list at the top of each topic list
+// page, so forcibly hide it.
+// FIXME Address the source, not the symptom.
+.shared-drafts .hideme {
+    display: none;
+}
+
+// The bottom of categories' names is cut off.
+.category-list .badge-category .category-name {
+    line-height: initial;
 }

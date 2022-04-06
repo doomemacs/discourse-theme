@@ -1,9 +1,26 @@
-// Larger search results popup
-.search-menu .menu-panel {
-    width: 560px !important;
+.d-header {
+    .header-search-enabled.align-right .contents .search-header {
+        // margin: 0;
+    }
+    .search-header {
+        margin-top: 12px !important;
+    }
+    .search-menu {
+        .searching {
+            top: 0.5em;
+        }
+        .search-input, .search-icon {
+            border: 0;
+        }
+        .search-input {
+            input {
+            }
+        }
+    }
 }
 
-// Higher contrast from search excerpts on search page
-.fps-result .blurb {
-    color: var(--primary);
+.anon .d-header {
+    .sign-up-button {
+        margin-left: 0.6em;
+    }
 }

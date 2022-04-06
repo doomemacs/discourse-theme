@@ -3,11 +3,11 @@
 blockquote {
     border: 1px solid var(--quote-border);
 
-    // The background change can make some elements with their own background
-    // look weird, so minor tweaks are needed.
+    // Some nested elements (like code blocks, blockqutoes, and asides) blend
+    // into the current blockquote. This helps them stand out. I don't repeat
+    // this for furthern estings because that should rarely happen.
     code:not(.hljs) { background-color: var(--code-inline-bg) !important; }
     aside.onebox { border-color: var(--secondary); }
-
     blockquote, aside.quote blockquote, aside.quote .title {
         background-color: var(--secondary) !important;
         border-color: var(--secondary);
@@ -19,8 +19,9 @@ blockquote {
     }
 }
 
+// Distinguish quotations from standard blockquotes.
 aside.quote {
-    border: none;
+    border: none    ;
     > .title {
         margin-bottom: -5px;
         a {
@@ -35,6 +36,6 @@ aside.quote {
         border-left: 4px solid var(--quote-border-2) !important;
     }
 
-    // No unnatural padding between the blockquote and its first element
+    // Eliminate excess padding at start of blockquotes
     blockquote :first-child { margin-top: 0; }
 }

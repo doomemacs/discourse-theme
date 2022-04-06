@@ -1,0 +1,11 @@
+// published.scss
+//
+// Concerns topics as published pages.
+
+.published-page {
+    .published-page-header-wrapper {
+        max-width: 800px;
+        > a { display: none; }
+    }
+    .published-page-author { display: none; }
+}

@@ -1,30 +1,23 @@
-// Username highlight
+// Highlight usernames based on their primary group membership, so they stand
+// out and are easier to identify.
 span.username {
     a { font-weight: bolder; }
-    &.headhoncho a { color: #ff6c6b !important; }
-    &.regular a { color: #51afef; }
-    &.moderator a { color: #c678dd; }
-    &.sponsor a { color: #ECBE7B; }
-    &.maintainer a { color: #a9a1e1; }
+    &.headhoncho  a { color: #ff6c6b !important; }
+    &.regular     a { color: #51afef; }
+    &.moderator   a { color: #c678dd; }
+    &.sponsor     a { color: #ECBE7B; }
+    &.maintainer  a { color: #a9a1e1; }
 }
 
-.cooked, #banner, .d-editor-preview {
-    line-height: 1.5;
-    ul, ol {
-        li {
-            margin-top: 1px;
-            margin-bottom: 2px;
-        }
-    }
+a.mention {
+    &[href="/u/hlissner"] { color: #ff6c6b; }
+}
+a.mention-group {
+    &[href="/groups/moderators"] { color: #c678dd !important; }
 }
 
-// Add a top border to posts with table-of-contents (is hidden otherwise).
-.d-toc-post article {
-    border-top: 1px solid var(--primary-low);
-}
-
-// Hide the number of edits by default (reveal it on hover though); we have a lot of wikis,
-// these'll get into the thousands before long.
+// Hide the number of edits by default (reveal it on hover though); we have a
+// lot of wikis, these'll get into the thousands before long.
 .post-info.edits {
     .d-button-label {
         opacity: 0.0;
@@ -33,21 +26,19 @@ span.username {
     &:hover .d-button-label { opacity: 1.0; }
 }
 
+// Distinguishes the tags from the category(ies) more, by adding a divider and
+// more spacing in between.
 .title-wrapper {
     .discourse-tags {
-        padding-top: 2px;
-        padding-left: 1em;
+        padding-left: 0.9em;
         border-left: 1px solid var(--primary-low);
         @include breakpoint(mobile-extra-large) {
             padding-left: 0;
             border-left: 0;
         }
         .discourse-tag {
-            padding-right: 5px
+            padding-right: 0.5em
         }
-    }
-    a.badge-wrapper {
-        margin-right: 1em;
     }
 }
 
@@ -58,101 +49,52 @@ span.username {
 .topic-timer-heading {
     border-bottom: 1px solid var(--primary-low);
     padding: 10px 0 9px;
-
 }
 
-.post-stream {
-    .topic-post + .gap {
-        border-top: 1px solid var(--primary-low);
-        padding-top: 0.5em;
-    }
-}
+// .post-stream {
+//     .topic-post + .gap {
+//         border-top: 1px solid var(--primary-low);
+//         padding-top: 0.5em;
+//     }
+// }
 
+// Notices blend into the background and become harder to notice, so undo that
+// and make the icon a louder color (for new notices, not old).
 .post-notice {
     background-color: var(--header_background);
-    // border-radius: 7px 7px 0 0;
-    &.old {
-        background-color: var(--header_background);
-        opacity: 0.5;
-    }
     svg.d-icon-user-shield {
         color: var(--highlight);
     }
 }
 
-.topic-post {
-    .topic-body {
-        // width: calc(#{$topic-body-width} + (#{$topic-body-width-padding} * 2) - 0.8em);
-        // margin-left: -46px;
-        // padding-left: 46px;
-    }
-    .topic-avatar {
-        // padding-right: 0.4em;
-        // position: relative;
-        // left: 0.4em;
-    }
-    &.moderator {
-        .topic-body {
-            // width: calc(#{$topic-body-width} + (#{$topic-body-width-padding} * 2) - 0.85em);
-            // .cooked { background-color: transparent; }
-        }
-        .topic-avatar {
-            // padding-left: 0.7em;
-            // padding-right: 0.15em;
-        }
-    }
-    // .row:first-of-type {
-    //     .post-notice, .topic-body, .topic-avatar {
-    //         // border-top: 1px solid var(--primary-low);
-    //     }
-    // }
-    &.deleted {
-        .topic-body { background-color: transparent; }
-        .topic-avatar, .topic-body > * {
-            opacity: 0.3;
-        }
-        &:hover {
-            .topic-avatar, .topic-body > * {
-                opacity: 1.0;
-            }
-        }
-    }
-    // &.moderator, &.deleted {
-    //     .topic-body {
-    //         width: calc(#{$topic-body-width} + (#{$topic-body-width-padding} * 2) - 0.8em);
-    //     }
-    //     .topic-avatar {
-    //         padding-right: 0.8em;
-    //     }
-    // }
-    // &.moderator {
-    //     .row:first-of-type {
-    //         .post-notice, .topic-body, .topic-avatar {
-    //             border-top: 1px solid var(--primary-low);
-    //         }
-    //     }
-    //     .topic-body {
-    //         background-color: var(--header_background);
-    //         // box-shadow: 0 5px 12px var(--highlight-low-or-medium);
-    //         .cooked { background-color: transparent; }
-    //     }
-    // }
-}
+// .topic-post {
+//     &.deleted {
+//         opacity: 0.5;
+//         background-color: var(--danger-low-mid);
+//         .cooked { background-color: transparent; }
+//         &:hover {
+//             opacity: 1.0;
+// //             .topic-avatar, .topic-body > * {
+// //                 opacity: 1.0;
+// //             }
+//         }
+//     }
+// }
 
-.accepted-answer {
-    svg.accepted {
-        padding-right: 0.22em;
-        font-size: 160%;
-        margin-top: -0.1em;
-        vertical-align: middle;
-    }
-    div.title {
-        font-size: 125%;
-        font-weight: bold;
-        padding: 1em 0.8em !important;
-        background: mix($secondary, $success, 75%) !important;
-        border-left: 4px solid var(--success) !important;
-    }
-    .quote-toggle { display: none; }
-    blockquote { display: none; }
-}
+// .accepted-answer {
+//     svg.accepted {
+//         padding-right: 0.22em;
+//         font-size: 160%;
+//         margin-top: -0.1em;
+//         vertical-align: middle;
+//     }
+//     div.title {
+//         font-size: 125%;
+//         font-weight: bold;
+//         padding: 1em 0.8em !important;
+//         background: mix($secondary, $success, 75%) !important;
+//         border-left: 4px solid var(--success) !important;
+//     }
+//     .quote-toggle { display: none; }
+//     blockquote { display: none; }
+// }

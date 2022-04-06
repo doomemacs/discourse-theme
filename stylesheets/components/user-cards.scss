@@ -1,44 +1,45 @@
-// user-cards.scss
+// // user-cards.scss
 
+// To match the gap between username and title in user cards.
 .iconic-user-fields {
-    padding-top: 0.4em;
-    a { margin-right: 0.5em; }
-    .fa {
-        font-size: 1.2em;
-        color: var(--quarternary);
-    }
-    .fa.d-icon.svg-icon.svg-string {
-        margin-left: 0px;
-    }
-}
-.primary-textual h3 > .ember-view:not(:first-child) {
-    margin-left: 10px;
+    padding-top: 0.375em;
 }
 
 // Fix the user card's background from having the same background as #main.
 .user-card, .group-card {
-    .card-content { background: darken($secondary, 4%); }
+    .card-content { background: darken($secondary, 6%); }
 }
 
 #user-card {
-    // Normally, the avatar hangs off the top edge of the user card. This causes the
-    // badge to detach from it when the user's basic info is too long (e.g. they've
-    // filled out their social links).
-    .first-row .user-card-avatar { margin-top: -45px; }
-    .usercard-controls { margin-top: 0; }
-    .card-content { margin-top: 10px; }
+    .first-row .user-card-avatar {
+        // Normally, the avatar hangs off the top edge of the user card. This
+        // causes the badge to detach from it when the user's basic info is too
+        // long (e.g. they've filled out their social links).
+        margin-top: -42px;
+    }
 
-    .card-content {
-        padding-top: 31px;
+    .avatar-flair {
+        bottom: -8px !important;
     }
-    .usercard-controls {
-        margin-top: -19px;
+
+    .username, h2 { float: left; margin-right: 1.5em; }
+    .username + h2 { clear: right; }
+    .iconic-user-fields {
+        float: left;
+        clear: both;
     }
-    &.no-bg .card-content {
-        padding-top: 12px;
-        margin-top: 19px;
-    }
-    span.ember-view {
-        position: relative !important;
-    }
+
+//     .card-content {
+//         padding-top: 31px;
+//     }
+//     .usercard-controls {
+//         margin-top: -19px;
+//     }
+//     &.no-bg .card-content {
+//         padding-top: 12px;
+//         margin-top: 19px;
+//     }
+//     span.ember-view {
+//         position: relative !important;
+//     }
 }

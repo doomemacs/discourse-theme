@@ -1,76 +1,131 @@
 // banner.scss
 //
-// For changes to the banner region of the website, where modal alerts and the
-// banner post are displayed.
+// For changes to region above the header, where modal alerts and the banner
+// post are displayed.
 
-#banner { display: none; }
-body.navigation-categories, body.navigation-topics, body.tag-help-wanted {
-    #banner { display: block; }
-}
-
-.alert.alert-info { padding: 1em 1.4em; }
-#banner {
-    padding: 0.35em 1.4em;
-
-    // Don't constrain the banner to a max-size. It's important that the banner
-    // be completely visible, to reduce the possibility of folks ignoring it.
-    max-height: none;
-    @include breakpoint(mobile-extra-large) {
-        height: auto;
-        [data-theme-image] { display: none; }
+.alert {
+    .close {
+        top: 0.64em;
     }
-    > button.close { display: none; }
-
-}
-
-#banner {
-    h2 {
-        padding-top: 0.35em;
+    &.alert-info {
+        padding: 1em 1.4em;
     }
-    p {
-        max-width: 700px;
-        font-size: 120%;
-        line-height: 1.75;
-    }
-    abbr {
-        text-decoration: none;
-    }
-    ul, li {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-    }
-    ul {
-        display: flex;
-        li {
-            flex-flow: column;
-            margin-right: 0.7em;
-            background-color: var(--secondary);
-            .emoji {
-                margin-top: -4px;
-                margin-left: -4px;
-                margin-right: 2px;
-                width: 26px;
-                height: 26px;
-            }
-            a[dir] {
-                display: block;
-                padding: 0.6em 0.75em;
-                font-weight: bold;
-                background: none;
-                border-bottom: none;
-            }
-            a[dir]:hover {
-                margin: 0;
-                cursor: pointer;
-                background-color: var(--highlight);
-                color: var(--secondary);
-                border-bottom: none;
-            }
+    // Make global notice stand out more, plus a warning icon:
+    &.alert-global-notice {
+        padding: 1.8em 1.4em;
+        font-size: 85%;
+        padding-left: 7.2em;
+        background-color: var(--header_background);
+        position: relative;
+        &:before {
+            content: "⚠️";
+            font-size: 400%;
+            position: absolute;
+            left: 0.425em;
+            top: calc(50% - 0.72em);
         }
     }
 }
 
 // Make certain things easier to see, like headings or alerts
-.alert.alert-info, #banner { font-size: 115%; }
+// #banner { font-size: 110%; }
 #discourse-modal .alert.alert-info { font-size: 95%; }
+
+// Make the welcome-link-banner our own.
+// TODO Fork discourse/discourse-welcome-link-banner so this can be lighter?
+.below-site-header-outlet.welcome-link-banner-connector {
+    .welcome-link-banner-wrapper {
+        background-image: none;
+        .welcome-link-banner {
+            padding-top: 1em;
+            background-image: url("https://discourse.doomemacs.org/uploads/default/original/2X/1/14685ed099c71816af49c048bee76a91ae889531.png");
+            background-position: right 0.4em bottom 0.25em;
+            background-size: auto, auto;
+            background-repeat: no-repeat;
+            @media screen and (max-width: 930px) {
+                padding-top: 0;
+                background-image: none;
+                .welcome-wrapper {
+                    margin-top: 2em;
+                }
+            }
+        }
+    }
+
+    .welcome-wrapper {
+        background: transparent;
+        box-shadow: none;
+        display: block;
+        margin-bottom: 0;
+        .welcome-content, .featured-banner-link {
+            padding-left: 1.4em;
+        }
+        .welcome-content {
+            max-width: 65%;
+            line-height: 1.4;
+            padding-top: 0;
+            padding-bottom: 0;
+            h2 { font-size: 230%; font-weight: 800; }
+            p  { font-size: 150%; }
+            @media screen and (max-width: 930px) {
+                max-width: 100%;
+                line-height: 1.3;
+                h2 { font-size: 210%; }
+                p  { font-size: 130%; }
+            }
+            @media screen and (max-width: 545px) {
+                h2 { font-size: 190%; }
+            }
+        }
+        .featured-banner-link {
+            margin-top: 0.5em;
+            width: 8em;
+            > div {
+                width: auto;
+                margin-right: 1.5em;
+                a {
+                    padding: 0;
+                    h3 {
+                        display: flex;
+                        align-items: center;
+                        gap: 0.45em;
+                    }
+                    .d-icon {
+                        display: block;
+                        margin-bottom: 0;
+                    }
+                }
+                &:nth-child(1) {
+                    a {
+                        background: var(--secondary);
+                        padding: 0.75em 1em 0.6em;
+                        @media screen and (max-width: 930px) {
+                            padding: 0.5em 0.75em 0.4em;
+                        }
+                        h3 {
+                            font-weight: bold;
+                        }
+                    }
+                }
+            }
+        }
+
+        @media screen and (max-width: 930px) {
+            display: flex;
+            padding: 0;
+            .featured-banner-link {
+                width: 100%;
+                flex-direction: row;
+                justify-content: center;
+            }
+            .welcome-content, .featured-banner-link {
+                padding: 0 0 0.75em;
+            }
+        }
+        // @media screen and (max-width: 545px) {
+        //     .featured-banner-link {
+        //         width: 100%;
+        //     }
+        // }
+    }
+}

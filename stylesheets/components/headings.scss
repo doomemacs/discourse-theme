@@ -1,25 +1,50 @@
+// headings.scss
+//
+// Concerned with styling h1, h2, h3, ... h6 tags.
+
 article .cooked, .d-editor-preview {
     ul + hr, ol + hr { margin-top: 25px; }
     hr + h1 { margin-top: 0; }
-    h1 + h2, h2 + h3, h3 + h4, h4 + h5, h5 + h6 { margin-top: 10px; }
+    h1 + h2, h2 + h3, h3 + h4, h4 + h5, h5 + h6 { margin-top: 1em; }
     p + h1, ul + h1, ol + h1, div + h1, blockquote + h1 { margin-top: 31px; }
     h1 + .md-table, summary + .md-table { margin-top: 0; }
     h1 {
+        font-size: 2.0rem;
+        font-weight: 800;
         padding-top: 12px;
         margin-top: 28px;
-        margin-bottom: 8px;
     }
     h2 {
+        font-size: 1.75rem;
+        font-weight: 700;
         margin: 28px 0 8px;
-        font-weight: 600;
     }
     h3 {
+        font-size: 1.5rem;
+        font-weight: 700;
         margin: 22px 0 6px;
+    }
+    h4 {
+        font-size: 1.4rem;
+        font-weight: 600;
         font-style: italic;
     }
-    h1,h2 { font-weight: bolder; }
-    h3,h4,h5,h6 { font-weight: bold; }
-    h4,h5,h6 { font-variant: small-caps; }
+    h5 {
+        font-size: 1.2rem;
+        font-weight: 600;
+        font-style: italic;
+    }
+    h6 {
+        font-size: 1.0rem;
+        font-weight: 600;
+        font-style: italic;
+    }
+    h2,h3,h4 {
+        color: var(--heading-num-fg);
+    }
+    h5,h6 {
+        color: var(--primary-high);
+    }
 }
 
 // Move anchor to end of heading, because right side is being used for outline
@@ -27,10 +52,55 @@ article .cooked, .d-editor-preview {
 .d-toc-post-heading {
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
-
-    .anchor {
+    column-gap: 0.2em;
+    a.anchor {
         order: 9999;
-        margin-left: 1.25em;
+        margin-top: -0.1em;
+        margin-left: 0.7em;
+    }
+}
+
+// Numbered titles for ToC'ed posts
+article .d-toc-cooked, .d-editor-preview {
+    position: relative;
+    overflow: visible !important;
+    h1,h2,h3 {
+        position: relative;
+        &:before {
+            font-weight: lighter;
+            font-size: 85%;
+            color: var(--heading-num-fg);
+            font-weight: 300;
+            opacity: 0.2;
+            transition: opacity 0.38s ease;
+            position: absolute;
+            left: -90px;
+            bottom: 2px;
+            width: 75px;
+            text-align: right;
+        }
+        &:hover:before { opacity: 0.9; }
+    }
+
+    // Numerical counters before headings
+    counter-reset: h1counter;
+    h1 { counter-reset: h2counter; }
+    h2 { counter-reset: h3counter; }
+    h1:before {
+        content: counter(h1counter);
+        counter-increment: h1counter;
+    }
+    h2:before {
+        content: counter(h1counter) "." counter(h2counter);
+        counter-increment: h2counter;
+    }
+    h3:before {
+        content: counter(h1counter) "." counter(h2counter) "." counter(h3counter);
+        counter-increment: h3counter;
+        opacity: 0.3 !important;
+    }
+
+    & blockquote {
+        h1, h2, h3 { &:before { content: ""; } }
     }
 }

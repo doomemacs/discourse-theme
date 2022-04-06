@@ -1,0 +1,63 @@
+// topic-list-sidebar.scss
+//
+// This customizes the sidebar provided by the discourse-category-sidebars
+// plugin. See https://github.com/hlissner/discourse-category-sidebars
+
+body.custom-sidebar {
+    @media screen and (min-width: 767px) {
+        .contents .topic-list {
+            grid-column-gap: 1%;
+        }
+        &.sidebar-left .contents .topic-list {
+            grid-template-columns: 25% 74% !important;
+            -ms-grid-columns: 25% 74% !important;
+        }
+        &.sidebar-right .contents .topic-list {
+            grid-template-columns: 74% 25% !important;
+            -ms-grid-columns: 74% 25% !important;
+        }
+    }
+
+    .category-sidebar {
+        // Fix sidebar being pushed down when there are no drafts
+        position: static !important;
+        // Align top of sidebar with top of topic table header.
+        margin-top: -10px !important;
+
+        // Ensure all top-level elements in sidebar take up all available width.
+        > .ember-view { width: 100%; }
+
+        .sticky-sidebar .cooked {
+            font-size: 85%;
+            line-height: 1.35;
+
+            // Hide the category "description", which will (by convention) by in
+            // the first blockquote of the post.
+            > blockquote:first-child { display: none; }
+
+            > blockquote {
+                // Less pronounced indentation on lists.
+                > ul, > ol {
+                    padding-left: 0px !important;
+                    ul, ol { padding-left: 12px !important; }
+                }
+
+                &.notice {
+                    background-color: var(--sidebar-tip-bg);
+                    border-left-width: 40px;
+                    border-left-color: transparent;
+                    .notice-icon {
+                        width: 30px !important;
+                        height: 30px !important;
+                        top: calc(50% - 15px);
+                        left: -34px;
+                    }
+                }
+                &:not(.notice) {
+                    background-color: var(--header_background);
+                    border: none;
+                }
+            }
+        }
+    }
+}
