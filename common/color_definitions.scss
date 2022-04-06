@@ -112,7 +112,6 @@ $header-background-alt: lighten($header-background, 8%);
     --tag-attention: #{mix($love, $primary, 65%)};
     --tag-duplicate: #{desaturate($primary-high, 100%)};
     --tag-project: #{mix($highlight, $primary, 70%)};
-    --tag-tooltip-bg: #{darken($header-background, 8%)};
 }
 
 // These colors are auto-generated from $primary, but the choices
