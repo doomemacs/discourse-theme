@@ -12,11 +12,13 @@ export default {
         let root = document.documentElement;
 
         // Ugh, I'm sorry universe
-        let [theme, dark, hljs_theme] = {
+        // FIXME Surely, there's a (fast) way to do this dynamically...
+        const [theme, dark, hljs_theme] = {
             "rgb(40, 44, 52)":    [ "doom-one",         true,  "atom-one-dark" ],
             "rgb(40, 42, 54)":    [ "doom-dracula",     true,  "hybrid" ],
             "rgb(29, 37, 44)":    [ "doom-city-lights", true,  "nord" ],
-            "rgb(250, 250, 250)": [ "doom-one-light",   false, "atom-one-light" ]
+            "rgb(250, 250, 250)": [ "doom-one-light",   false, "atom-one-light" ],
+            "rgb(236, 239, 244)": [ "doom-nord",        false, "nord" ]
         }[window.getComputedStyle(root).backgroundColor];
 
         root.classList.add(`${theme}-theme`);
