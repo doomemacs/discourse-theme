@@ -131,70 +131,85 @@
 // Posters listing
 
 // More compact user list
-.topic-list .posters {
-    width: 5.5em;
-    display: flex;
-    justify-content: right;
-    align-items: center;
-    padding-right: 0.5em;
-    > a {
-        box-shadow: -1px 0 4px var(--header_background);
-        border-radius: 5px;
-        width: 62px;
-        height: 62px;
-        transition: margin-right 0.28s ease-out;
-        z-index: 1;
-        &:not(.latest) {
-            margin-right: -35px;
-            &:hover {
-                margin-right: -4px;
-            }
-        }
-        &:first-child.latest {
-            // HACK The latest poster is bumped to the end of the poster list.
-            //   The exception is OP. If they are the latest poster, they're
-            //   just given a glow. I think this is counter-intuitive and
-            //   unobvious, so I bump them to the end of the list using flexbox
-            //   instead.
-            order: 9999;
-            .avatar.latest {
-                position: static;
-                box-shadow: none;
-                border: 1px solid var(--header_background);
-            }
-        }
 
-        // We give avatars a colored "fold" on the corner of their topic-list
-        // avatars. This is so I can quickly identify special groups
-        // (particularly regulars and sponsors), whom I owe special treatment,
-        // as per their sponsorship rewards.
-        &.group-maintainer, &.group-headhoncho, &.group-moderator, &.group-regular, &.group-sponsor {
-            position: relative;
-            img.avatar {
-                border-radius: 5px 5px 5px 0;
-            }
-            &:after, &:before {
-                border-right:  4px solid transparent;
-                border-top:    4px solid transparent;
-                border-left:   4px solid var(--header_background);
-                border-bottom: 4px solid var(--header_background);
-                width: 0%;
-                height: 0%;
-                content: "";
-                position: absolute;
-                left: 1px;
-                bottom: 1px;
-            }
-            &:before {
-                left: 0;
-                border-width: 5px;
-            }
+.topic-list {
+    .topic-list-data {
+        &.poster-list {
+            width: 7.5em;
         }
-        &.group-maintainer:after { border-left-color: #a9a1e1; border-bottom-color: #a9a1e1; }
-        &.group-headhoncho:after { border-left-color: #ff6c6b; border-bottom-color: #ff6c6b; }
-        &.group-moderator:after  { border-left-color: #c678dd; border-bottom-color: #c678dd; }
-        &.group-regular:after    { border-left-color: #51afef; border-bottom-color: #51afef; }
-        &.group-sponsor:after    { border-left-color: #ECBE7B; border-bottom-color: #ECBE7B; }
+        &.age {
+            width: 3.5em;
+        }
+        &.main-link {
+            width: 100%;
+        }
+    }
+
+    .posters {
+        width: 9.5em;
+        display: flex;
+        justify-content: right;
+        align-items: center;
+        padding-right: 0.5em;
+        > a {
+            box-shadow: -1px 0 4px var(--header_background);
+            border-radius: 5px;
+            width: 62px;
+            height: 62px;
+            transition: margin-right 0.28s ease-out;
+            z-index: 1;
+            &:not(.latest) {
+                margin-right: -35px;
+                &:hover {
+                    margin-right: -4px;
+                }
+            }
+            &:first-child.latest {
+                // HACK The latest poster is bumped to the end of the poster list.
+                //   The exception is OP. If they are the latest poster, they're
+                //   just given a glow. I think this is counter-intuitive and
+                //   unobvious, so I bump them to the end of the list using flexbox
+                //   instead.
+                order: 9999;
+                .avatar.latest {
+                    position: static;
+                    box-shadow: none;
+                    border: 1px solid var(--header_background);
+                }
+            }
+
+            // We give avatars a colored "fold" on the corner of their topic-list
+            // avatars. This is so I can quickly identify special groups
+            // (particularly regulars and sponsors), whom I owe special treatment,
+            // as per their sponsorship rewards.
+            &.group-maintainer, &.group-headhoncho, &.group-moderator, &.group-regular, &.group-sponsor {
+                position: relative;
+                img.avatar {
+                    border-radius: 5px 5px 5px 0;
+                }
+                &:after, &:before {
+                    border-right:  4px solid transparent;
+                    border-top:    4px solid transparent;
+                    border-left:   4px solid var(--header_background);
+                    border-bottom: 4px solid var(--header_background);
+                    width: 0%;
+                    height: 0%;
+                    content: "";
+                    position: absolute;
+                    left: 1px;
+                    bottom: 1px;
+                }
+                &:before {
+                    left: 0;
+                    border-width: 5px;
+                }
+            }
+            &.group-maintainer:after { border-left-color: #a9a1e1; border-bottom-color: #a9a1e1; }
+            &.group-headhoncho:after { border-left-color: #ff6c6b; border-bottom-color: #ff6c6b; }
+            &.group-moderator:after  { border-left-color: #c678dd; border-bottom-color: #c678dd; }
+            &.group-regular:after    { border-left-color: #51afef; border-bottom-color: #51afef; }
+            &.group-sponsor:after    { border-left-color: #ECBE7B; border-bottom-color: #ECBE7B; }
+        }
     }
 }
 
@@ -207,14 +222,21 @@
 .category-guides-workflows,
 .category-guides-cheatsheets,
 .category-guides-cli {
-    .topic-list .posters {
-        > a {
-            display: none;
-            box-shadow: none;
+    .topic-list {
+        .topic-list-data {
+            &.poster-list, .posters {
+                width: 3.5em;
+            }
         }
-        > a:first-child {
-            display: block;
-            margin-right: -4px;
+        .posters {
+            > a {
+                display: none;
+                box-shadow: none;
+            }
+            > a:first-child {
+                display: block;
+                margin-right: -4px;
+            }
         }
     }
 }
