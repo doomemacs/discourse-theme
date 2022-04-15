@@ -1,29 +1,48 @@
 // links.scss
 
 // More readable in-post links
-.cooked, .d-editor-preview {
-    p, li {
-        a:not(.mention):not(.mention-group):not(.hashtag) {
-            padding: 0 2px;
+.cooked p,
+.cooked li,
+.d-editor-preview p,
+.d-editor-preview li,
+.user-card-public-field {
+    a {
+        transition: opacity 0.14s ease;
+        opacity: 1.0;
+        &:hover { opacity: 0.8; }
+        &:not([class]), &[class=""] {
+            padding: 0 1px;
             color: var(--link-fg);
             background-color: var(--link-bg);
-            border-bottom: 1px solid var(--link-underline);
-            &:hover {
-                background-color: var(--link-bg-hover);
-                border-bottom: 1px solid var(--link-underline-hover);
-            }
             .badge.badge-notification.clicks {
                 background-color: var(--link-underline);
                 color: var(--tertiary);
             }
             &.d-toc-anchor-link, &.anchor {
                 background-color: transparent;
-                border-bottom: 0;
-            }
-            &.hashtag {
-                color: var(--link-fg);
-                span { text-decoration: none; }
             }
         }
+    }
+
+    a.hashtag, a[href^="/tags/c/"] {
+        &, &:link, &:visited {
+            color: var(--quaternary);
+            font-weight: bold;
+            padding: 0 2px;
+            background-color: #{rgba($love, 0.14)};
+        }
+        &:hover {
+            background-color: #{rgba($love, 0.25)};
+            span {
+                text-decoration: none;
+            }
+        }
+    }
+}
+
+// In case of floated image links
+.float-right, .float-left {
+    > p:only-child > a:only-child {
+        background-color: transparent;
     }
 }

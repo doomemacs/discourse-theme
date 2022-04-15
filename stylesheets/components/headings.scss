@@ -9,40 +9,39 @@ article .cooked, .d-editor-preview {
     p + h1, ul + h1, ol + h1, div + h1, blockquote + h1 { margin-top: 31px; }
     h1 + .md-table, summary + .md-table { margin-top: 0; }
     h1 {
-        font-size: 2.0rem;
+        font-size: 1.6rem;
         font-weight: 800;
         padding-top: 12px;
         margin-top: 28px;
     }
     h2 {
-        font-size: 1.75rem;
+        font-size: 1.55rem;
         font-weight: 700;
         margin: 28px 0 8px;
     }
     h3 {
-        font-size: 1.5rem;
+        font-size: 1.4rem;
         font-weight: 700;
         margin: 22px 0 6px;
     }
     h4 {
-        font-size: 1.4rem;
+        font-size: 1.35rem;
         font-weight: 600;
-        font-style: italic;
     }
     h5 {
-        font-size: 1.2rem;
+        font-size: 1.25rem;
         font-weight: 600;
         font-style: italic;
     }
     h6 {
-        font-size: 1.0rem;
+        font-size: 1.2rem;
         font-weight: 600;
         font-style: italic;
     }
-    h2,h3,h4 {
+    h2,h3 {
         color: var(--heading-num-fg);
     }
-    h5,h6 {
+    h4,h5,h6 {
         color: var(--primary-high);
     }
 }
@@ -53,10 +52,13 @@ article .cooked, .d-editor-preview {
     display: flex;
     flex-direction: row;
     column-gap: 0.2em;
+    > * {
+        white-space: nowrap;
+    }
     a.anchor {
         order: 9999;
         margin-top: -0.1em;
-        margin-left: 0.7em;
+        margin-left: 1.15em;
     }
 }
 

@@ -20,10 +20,12 @@
 .discourse-tags a { order: 1; }
 
 .discourse-tag {
-    padding-left: 0;
-    background: none;
     &, &:visited, &:hover {
         color: var(--primary-high);
+        &.bullet {
+          margin-right: 8px;
+          align-items: baseline;
+        }
         &.bullet::before {
           background-color: var(--primary-high);
         }
@@ -36,7 +38,7 @@
 .discourse-tags, .search-results {
     // Ensures tags can be reordered via CSS
     &, .search-results .topic .search-category {
-        display: flex !important;
+        // display: flex !important;
         justify-content: flex-start;
         align-items: baseline;
     }
@@ -47,20 +49,34 @@
 
 .topic-list, .title-wrapper {
   .tag-icon {
-    .d-icon-sync-alt, .d-icon-times-circle, .d-icon-rss-square, .d-icon-plus-square, .d-icon-exclamation-circle, .d-icon-clock {
+    .d-icon-times-circle,
+    .d-icon-rss-square,
+    .d-icon-plus-square,
+    .d-icon-exclamation-circle,
+    .d-icon-clock,
+    .d-icon-play-circle {
       margin-right: 1px;
       width: 1.35em;
       font-size: 90%;
       vertical-align: -0.1em;
     }
-    .d-icon-sync-alt {
-      margin-right: 2px;
-      font-size: 85%;
+    .d-icon-play-circle {
+      margin-right: 3px;
+      font-size: 80%;
+      vertical-align: -0.1em;
     }
     .d-icon-plus-square {
       margin-right: 2px;
     }
   }
+}
+
+@mixin modtag {
+  background-color: var(--header_background);
+  padding: 0 0.25em;
+  text-transform: uppercase;
+  border-radius: 2px;
+  &.bullet:before { display: none; }
 }
 
 // Version tags
@@ -85,7 +101,9 @@
 @include tag-color(("=help-wanted"), var(--tag-attention), 3);
 @include tag-color(("=stale" "=obsolete"), var(--tag-stale), 4);
 @include tag-color(("=duplicate" "=invalid"), desaturate($primary-high, 100%), 5);
-@include tag-color(("=faq"), var(--tag-attention), 5);
+@include tag-color(("=faq"), var(--tag-attention), 1) {
+  @include modtag
+};
 // Topic type tags
 @include tag-color(("=issue" "=project" "=notice" "=request" "=discussion" "=question" "=tip" "=guide"), var(--primary), 5);
 // Emacs contexts
@@ -106,17 +124,9 @@
      "=jupyter" "=lsp" "=eglot"
      ), false, 6);
 
-@include tag-color(("=gh"), var(--primary), 1);
+@include tag-color(("=linked"), var(--primary), 1);
 
 // Make moderation tags very distinct.
-@mixin modtag {
-  background-color: var(--header_background);
-  padding: 0 0.25em;
-  font-weight: bold;
-  text-transform: lowercase;
-  font-variant: small-caps;
-}
-
 @include tag-color(("=priority" "=hot"), var(--danger), 1) {
   @include modtag;
 }

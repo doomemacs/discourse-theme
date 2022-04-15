@@ -1,7 +1,7 @@
 // code.scss
 
 code {
-    padding: 3px 3px 0;
+    padding: 3px 2px 0;
 
     &.hljs {
         color: var(--code-inline-fg) !important;
@@ -15,12 +15,13 @@ code {
     }
 }
 .copy-codeblocks code {
+    font-size: 90%;
     padding: 9px;
     margin-bottom: 2px;
     border-left: 4px solid var(--code-border);
     background-color: var(--code-bg) !important;
-}
-blockquote .copy-codeblocks code {
-    border-left: 4px solid var(--code-border);
-    background-color: var(--code-inline-bg) !important;
+    blockquote & {
+        border-left: 4px solid var(--code-border);
+        background-color: var(--code-inline-bg) !important;
+    }
 }

@@ -6,6 +6,7 @@
 
 // Hide tags that are redundant with their containing category. Since tags have
 // more search-flexibility, we don't want to sacrifice one or the other.
+@include tag-hide-in-category(("support-perf"), "perf");
 @include tag-hide-in-category(("guides-elisp"), "elisp");
 @include tag-hide-in-category(("guides-config"), "config");
 @include tag-hide-in-category(("guides-workflows"), "workflow");

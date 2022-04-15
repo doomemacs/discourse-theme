@@ -1,34 +1,4 @@
-<script type="text/discourse-plugin" version="0.9">
-  $(document).ajaxSuccess(function () {
-    // Hide :before element for tags with an icon.
-    $('.discourse-tag.bullet .tag-icon').each(function() {
-      $(this).parent().addClass('has-icon');
-    });
-  });
-</script>
-
-<script type="text/x-handlebars" data-template-name="list/posters-column.raw">
-  <td class='topic-list-data poster-list'>
-    <div class="posters">
-    {{#each posters as |poster|}}
-      {{#if poster.moreCount}}
-        <a class="posters-more-count">{{poster.moreCount}}</a>
-      {{else}}
-        <a href="{{poster.user.path}}"
-           data-user-card="{{poster.user.username}}"
-           class="{{poster.extraClasses}}">
-          {{avatar poster
-            avatarTemplatePath="user.avatar_template"
-            usernamePath="user.username"
-            namePath="user.name"
-            imageSize="60"}}</a>
-      {{/if}}
-    {{/each}}
-    </div>
-  </td>
-</script>
-
-<script type="text/x-handlebars" data-template-name="topic-list-header.raw">
+<script type='text/x-handlebars' data-template-name='topic-list-header.raw'>
   {{~raw-plugin-outlet name="topic-list-header-before"~}}
   {{#if bulkSelectEnabled}}
     <th class="bulk-select">
@@ -37,111 +7,138 @@
       {{/if}}
     </th>
   {{/if}}
-  {{raw "topic-list-header-column" order='default' name=listTitle bulkSelectEnabled=bulkSelectEnabled showBulkToggle=toggleInTitle canBulkSelect=canBulkSelect canDoBulkActions=canDoBulkActions}}
-  {{#if showLikes}}
-    {{raw "topic-list-header-column" sortable=sortable number='true' order='likes' name='likes'}}
-  {{/if}}
-  {{!--
-    {{#if showOpLikes}}
-      {{raw "topic-list-header-column" sortable=sortable number='true' order='op_likes' name='likes'}}
-    {{/if}}
-    {{raw "topic-list-header-column" sortable=sortable number='true' order='views' name='views'}}
-    {{raw "topic-list-header-column" sortable=sortable number='true' order='posts' forceName='Replies'}}
-  --}}
-  <th class="topic-list-data hideme"></th>
-  {{raw "topic-list-header-column" sortable=sortable number='true' order='activity' name='activity'}}
+  {{raw "topic-list-header-column" order='default' name='topic.title' bulkSelectEnabled=bulkSelectEnabled showBulkToggle=toggleInTitle canBulkSelect=canBulkSelect canDoBulkActions=canDoBulkActions}}
+  {{raw "topic-list-header-column" sortable='true' order='activity' forceName="Last Update"}}
   {{~raw-plugin-outlet name="topic-list-header-after"~}}
 </script>
 
-
-<script type="text/x-handlebars" data-template-name="list/topic-list-item.hbr">
+<script type='text/x-handlebars' data-template-name='list/topic-list-item.raw'>
   {{~raw-plugin-outlet name="topic-list-before-columns"}}
 
   {{#if bulkSelectEnabled}}
-    <td class="bulk-select topic-list-data">
-      <label for="bulk-select-{{topic.id}}">
-        <input type="checkbox" class="bulk-select" id="bulk-select-{{topic.id}}">
-      </label>
+    <td class='star topic-list-data'>
+      <input type='checkbox' class='bulk-select'>
     </td>
   {{/if}}
 
-  <td class='main-link clearfix topic-list-data' colspan="1">
-    {{~raw-plugin-outlet name="topic-list-before-link"}}
-    <span class='link-top-line'>
-      {{~raw-plugin-outlet name="topic-list-before-status"}}
-      {{~raw "topic-status" topic=topic}}
-      {{~topic-link topic class="raw-link raw-topic-link"}}
-      {{~#if topic.featured_link}}
-        {{~topic-featured-link topic}}
-      {{~/if}}
-      {{~raw-plugin-outlet name="topic-list-after-title"}}
-      {{~raw "list/unread-indicator"
-        includeUnreadIndicator=includeUnreadIndicator
-        topicId=topic.id
-        unreadClass=unreadClass~}}
-      {{~#if showTopicPostBadges}}
-        {{~raw "topic-post-badges" unreadPosts=topic.unread_posts unseen=topic.unseen url=topic.lastUnreadUrl newDotText=newDotText}}
-      {{~/if}}
-    </span>
-
-    <div class="link-bottom-line">
-      {{#unless hideCategory}}
-        {{#unless topic.isPinnedUncategorized}}
-          {{~raw-plugin-outlet name="topic-list-before-category"}}
-          {{category-link topic.category}}
-        {{/unless}}
-      {{/unless}}
-      {{discourse-tags topic mode="list" tagsForUser=tagsForUser}}
-      {{raw "list/action-list" topic=topic postNumbers=topic.liked_post_numbers className="likes" icon="heart"}}
+  <td class='main-link clearfix topic-list-data'>
+    <div class='creator-avatar'>
+      <a href="/users/{{topic.creator.username}}"
+         data-user-card="{{topic.creator.username}}"
+         class="{{creatorClasses}}">
+        {{avatar topic.creator imageSize="large"}}
+      </a>
     </div>
+    {{~raw-plugin-outlet name="topic-list-before-status"}}
+    {{~raw "topic-status" topic=topic}}
+    {{~topic-link topic class="raw-link raw-topic-link"}}
+    {{~#if topic.featured_link}}
+      {{~topic-featured-link topic}}
+    {{~/if}}
+    {{~raw "list/unread-indicator" includeUnreadIndicator=includeUnreadIndicator
+      topicId=topic.id
+      unreadClass=unreadClass~}}
+    {{~#if controller.showTopicPostBadges}}
+      {{raw "topic-post-badges"
+        unreadPosts=topic.unread_posts
+        unseen=topic.unseen
+        url=topic.lastUnreadUrl
+        newDotText=newDotText}}
+    {{~/if}}
+    {{~raw-plugin-outlet name="topic-list-after-title"}}
+    <div class='creator'>
+      {{~#if showCategory}}
+        {{category-link topic.category}}
+      {{/if}}
 
+      <a href={{topic.url}} class="date">{{format-date topic.createdAt format="tiny"}}</a>
+      {{~#if topic.replyCount}}
+        <span class='reply-comment'>{{d-icon "comment"}} {{topic.replyCount}}</span>
+      {{/if}}
+      {{~#if hasLikes}}
+        <a href='{{topic.summaryUrl}}' class="likes">
+          {{d-icon "heart"}} {{number topic.like_count}}
+        </a>
+      {{/if}}
+
+      <span>{{discourse-tags topic mode="list"}}</span>
+    </div>
     {{#if expandPinned}}
       {{raw "list/topic-excerpt" topic=topic}}
     {{/if}}
+  </td>
 
-    <div class="topic-meta-data">
-      <div class="num topic-list-data views {{topic.viewsHeat}}">
-        {{d-icon "far-eye"}} {{number topic.views numberKey="views_long"}}
+  <td class="last-post topic-list-data">
+    {{~raw-plugin-outlet name="topic-list-before-relative-date"~}}
+    {{#if posterClasses}}
+      <div class='poster-info'>
+        <span class='editor'>
+          <a href="/users/{{topic.last_poster_username}}" data-auto-route="true" data-user-card="{{topic.last_poster_username}}">{{topic.last_poster_username}}</a>
+        </span>
+        <a href="{{topic.lastPostUrl}}">{{format-date topic.bumpedAt format="tiny"}}</a>
       </div>
+      <div class='poster-avatar'>
+        <a href="{{topic.lastPostUrl}}" data-user-card="{{topic.last_poster_username}}" class="{{posterClasses}}">{{avatar topic.lastPosterUser imageSize="medium"}}</a>
+      </div>
+    {{else}}
+      <a href="{{topic.lastPostUrl}}">{{format-date topic.bumpedAt format="tiny"}}</a>
+    {{/if}}
+  </td>
+</script>
 
-      {{#if topic.replyCount}}
-        <div class="num topic-list-data posts-map posts {{topic.likesHeat}}" title="{{topic.title}}">
-          <button class="btn-link posts-map badge-posts {{topic.likesHeat}}">
-            {{raw-plugin-outlet name="topic-list-before-reply-count"}}
-            {{d-icon "far-comment"}}
-            {{number topic.replyCount noTitle="true" ariaLabel=topic.title}}
-          </button>
-        </div>
-      {{/if}}
+<script>
+  (function(){
+    function addAdmin(classes, user) {
+      return (user.username !== 'hlissner' && user.moderator)
+           ? `${classes} group-moderators`
+           : classes;
+    }
+    require('discourse/components/topic-list-item').default.reopen({
+      creatorClasses: function() {
+        let poster = this.get('topic.posters')[0];
+        if (poster) {
+          return addAdmin(poster.extraClasses, poster.user);
+        }
+      }.property(),
+      posterClasses: function() {
+        const posters = this.get('topic.posters');
+        if (posters.length > 1) {
+          const lastPosterName = this.get('topic.last_poster_username');
+          const lastPoster = posters.find(x => x.user.username === lastPosterName);
+          if (lastPoster) {
+            const bumpDate = this.get('topic.bumpedAt');
+            const createdDate = this.get('topic.createdAt');
+            if (bumpDate !== createdDate) {
+              return addAdmin(lastPoster.extraClasses, lastPoster.user);
+            }
+          }
+        }
+      }.property(),
+      showCategory: function() {
+        return !this.get('controller.hideCategory') &&
+               this.get('topic.creator') &&
+               this.get('topic.category.id') !== this.get('topicTrackingState.filterCategory.id');
+      }.property(),
+    });
+  })();
+</script>
 
-      {{#if hasLikes}}
-        <div class="num topic-list-data likes">
-          <a href='{{topic.summaryUrl}}'>
-            {{d-icon "heart"}} {{number topic.like_count}}
-          </a>
-        </div>
-      {{/if}}
-
-      {{#if showOpLikes}}
-        <div class="num topic-list-data likes">
-          {{#if hasOpLikes}}
-          <a href='{{topic.summaryUrl}}'>
-            {{d-icon "heart"}} {{number topic.op_like_count}}
-          </a>
-          {{/if}}
-        </div>
-      {{/if}}
+<script type='text/x-handlebars' data-template-name='/connectors/user-profile-primary/config-link'>
+  {{#if configLink}}
+    <div class="public-user-fields">
+      <div class="public-user-field">
+        <span class="user-field-name">{{configLink.name}}</span>:
+        <span class="user-field-value">{{{configLink.link}}}</span>
+      </div>
     </div>
-  </td>
-
-  {{#if showPosters}}
-    {{raw "list/posters-column" posters=topic.featuredUsers }}
   {{/if}}
+</script>
 
-  <td class="num topic-list-data {{cold-age-class topic.createdAt startDate=topic.bumpedAt class=""}} activity" title="{{html-safe topic.bumpedAtTitle}}">
-    <a class="post-activity" href="{{topic.lastPostUrl}}">
-      {{~raw-plugin-outlet name="topic-list-before-relative-date"~}}
-      {{~format-date topic.bumpedAt format="tiny" noTitle="true"~}}
-    </a>
-  </td>
+<script type='text/x-handlebars' data-template-name='/connectors/user-card-metadata/config-link'>
+  {{#if configLink}}
+    <h3 class="user-card-public-field">
+      <span class="user-field-name">{{configLink.name}}</span>:
+      <span class="user-field-value">{{{configLink.link}}}</span>
+    </h3>
+  {{/if}}
 </script>

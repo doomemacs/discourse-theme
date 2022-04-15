@@ -1,0 +1,15 @@
+// groups.scss
+//
+// Affects the groups listing in /g
+
+// Dinstiguish the "expert-*" categories from the rest, as they serve a
+// different function.
+.groups-boxes {
+    a.group-box:not([href^="/g/experts-"]) + a.group-box[href^="/g/experts-"], .trust_level_0 {
+        grid-column-start: 1;
+    }
+    a.group-box[href^="/g/experts-"] {
+        order: 9999;
+        background: var(--header_background);
+    }
+}

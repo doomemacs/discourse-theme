@@ -1,25 +1,30 @@
+// search.scss
+//
+// Concerns the search bar in the header and search page.
+
 .d-header {
-    .header-search-enabled.align-right .contents .search-header {
-        // margin: 0;
-    }
+    // HACK Fix slight misalignment between the search input, button, and other
+    //   header navigational elements.
     .search-header {
-        margin-top: 12px !important;
+        margin-top: 10px !important;
     }
+
+    // HACK Fix mismatched borders on search input and button.
     .search-menu {
-        .searching {
-            top: 0.5em;
-        }
         .search-input, .search-icon {
-            border: 0;
-        }
-        .search-input {
-            input {
-            }
+            border-color: var(--header_background);
         }
     }
 }
 
 .anon .d-header {
+    // HACK Oversized fonts push the search bar's height a pixel too high.
+    .search-menu .search-input input#search-term {
+        font-size: 95%;
+    }
+    .search-header {
+        margin-top: 12px !important;
+    }
     .sign-up-button {
         margin-left: 0.6em;
     }

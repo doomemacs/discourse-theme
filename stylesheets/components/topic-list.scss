@@ -3,246 +3,190 @@
 // This affects all topic listing pages, such as
 // https://discourse.doomemacs.org/c/dev
 
-// Make the trailing message at the end of topic listings stand out.
-@media screen and (min-width: 767px) {
-    footer.topic-list-bottom {
-        margin-bottom: -3em;
-        padding: 0.85em 0.75em 0.45em;
-        background-color: var(--header_background);
-        .footer-message { text-align: center; }
+// Variables
+// *------------------------------------------------*
+// $color-slate: #4d4d4d;
+// $color-gray: #808080;
+
+$margin-6: 6px;
+
+// Topic list
+// *------------------------------------------------*
+.topic-list {
+    margin-top: 6px;
+    td {
+        padding-bottom: 6px;
+        font-size: 0.8em;
     }
+    .creator {
+        > span, > a {
+            color: var(--primary-medium);
+        }
+    }
+    .editor a {
+        color: var(--primary-very-high);
+    }
+    td:first-of-type {
+        padding: 12px 0 12px 8px;
+    }
+    td.star {
+        width: 40px;
+    }
+    td.last-post, th.activity {
+        width: 135px;
+        text-align: right;
+        .relative-date {
+            // color: $color-slate;
+            color: var(--primary-medium);
+        }
+    }
+    .creator {
+        margin-top: 3px;
+    }
+    .creator, .editor {
+        font-size: 13px;
+        display: block;
+    }
+    .topic-list-item .discourse-tags {
+        margin-left: $margin-6;
+    }
+    button.bulk-select {
+        padding: 5px;
+    }
+    .creator-username {
+        margin-right: $margin-6;
+    }
+    .creator-avatar {
+        float: left;
+        margin-right: 10px;
+        margin-top: 0px;
+    }
+    .poster-avatar {
+        float: right;
+        margin-top: 2px;
+    }
+    .poster-info {
+        width: 70%;
+        float: left;
+        text-align: right;
+    }
+    .badge-wrapper, .topic-list-item .discourse-tags {
+        font-size: var(--font-0);
+    }
+    .badge-wrapper {
+        background-color: var(--header_background);
+        padding: 0 0.35em;
+        &.bullet {
+            margin-right: 4px;
+        }
+    }
+
+    .reply-comment + .likes {
+        margin-left: 5px;
+    }
+    a.likes:hover {
+        color: var(--love);
+    }
+    .date {
+        margin-right: 6px;
+    }
+
+    .topic-excerpt {
+        clear: both;
+        padding-left: 58px;
+        // Hide redundant "read more" buttons (the whole post listing is a
+        // link), and overly busy emoji in topic preview excerpts.
+        .topic-excerpt-more, .emoji {
+            display: none;
+        }
+    }
+
+    .topic-list-body {
+        tr {
+            transition: opacity 0.12s ease-in-out;
+            &:hover {
+                opacity: 1.0 !important;
+            }
+            .author {
+                text-align: center;
+            }
+            &.pinned {
+                background-color: var(--topic-pinned-bg);
+                border-bottom-color: var(--topic-pinned-border);
+                .title { font-weight: bold; }
+            }
+
+            &.tag-help-wanted {
+                background-color: var(--topic-helpwanted-bg);
+                // .topic-list-data:first-of-type {
+                //     border-left: 4px solid var(--love);
+                //     padding-left: 8px;
+                // }
+            }
+            &.archived, &.tag-obsolete, &.tag-stale, &.tag-duplicate, &.tag-invalid {
+                opacity: 0.4;
+                filter: grayscale(0.5);
+                &:hover {
+                    filter: grayscale(0);
+                }
+                .title { font-weight: normal; }
+            }
+        }
+    }
+
 }
 
 .topic-list-header {
     background-color: var(--header_background);
 }
-
-.topic-list {
-    thead th.bulk-select {
-        padding-left: 0.85em !important;
-        width: 1.7em;
-    }
-
-    .category-badge-icon {
-        font-size: $font-down-1;
-    }
-
-    .link-bottom-line, .topic-meta-data {
-        display: flex;
-    }
-    .link-bottom-line {
-        clear: both;
-        .badge-wrapper {
-            margin-right: 10px;
-        }
-    }
-    .topic-meta-data {
-        margin-top: 1px;
-        align-content: flex-start;
-        gap: 1em;
-        .topic-list-data {
-            padding: 0;
-        }
-    }
-
-    .num {
-        width: auto;
-        white-space: nowrap;
-        text-align: left;
-        font-size: $font-down-2;
-
-        .badge-posts {
-            padding: 0;
-            font-weight: normal !important;
-        }
-
-        &.activity {
-            font-size: 100%;
-            text-align: right;
-            svg { margin-right: 5px; }
-            a:hover { color: var(--highlight); }
-        }
-        &.activity, &.posts { a { padding: 0; } }
-        &.likes a { color: var(--love); }
-        &.likes svg { font-size: 80%; }
-        &.posts a:hover { color: var(--primary); }
-    }
-
-    .discourse-tags {
-        display: flex;
-        @include breakpoint(mobile-extra-large) {
-            float: left;
-            clear: left;
-        }
-        .discourse-tag {
-            margin-left: 1px;
-            margin-right: 10px;
-            .tag-icon { margin-left: -2px; }
-        }
-    }
-
-    .topic-excerpt .topic-excerpt-more {
-        color: var(--tertiary);
-    }
-
-    .topic-list-item {
-        transition: opacity 0.12s ease-in-out;
-        &:hover {
-            opacity: 1.0 !important;
-        }
-        .author {
-            text-align: center;
-        }
-        &.pinned {
-            background-color: var(--topic-pinned-bg);
-            border-bottom-color: var(--topic-pinned-border);
-            .title { font-weight: bold; }
-        }
-
-        &.tag-help-wanted {
-            border-left: 4px solid var(--love);
-        }
-        &.archived, &.tag-obsolete, &.tag-stale, &.tag-duplicate, &.tag-invalid {
-            opacity: 0.4;
-            filter: grayscale(0.5);
-            &:hover {
-                filter: grayscale(0);
-            }
-            .title { font-weight: normal; }
+@media screen and (min-width: 767px) {
+    footer.topic-list-bottom {
+        .footer-message {
+            padding: 0.85em 0.8em 0.45em;
+            background-color: var(--header_background);
         }
     }
 }
 
-// Make the "Latest", "Unassigned", and "Top" buttons stand out more.
-.nav-pills > li {
-    background-color: var(--header_background);
-    > a { color: var(--quaternary); }
-}
-
-.shared-drafts.topic-list {
-    .num {
-        display: none;
-        &.activity { display: block; }
-    }
-}
-
-
-//
-// Posters listing
-
-// More compact user list
-
-.topic-list {
-    .topic-list-data {
-        &.poster-list {
-            width: 7.5em;
-        }
-        &.age {
-            width: 3.5em;
-        }
-        &.main-link {
-            width: 100%;
-        }
-    }
-
-    .posters {
-        width: 9.5em;
-        display: flex;
-        justify-content: right;
-        align-items: center;
-        padding-right: 0.5em;
-        > a {
-            box-shadow: -1px 0 4px var(--header_background);
-            border-radius: 5px;
-            width: 62px;
-            height: 62px;
-            transition: margin-right 0.28s ease-out;
-            z-index: 1;
-            &:not(.latest) {
-                margin-right: -35px;
-                &:hover {
-                    margin-right: -4px;
-                }
+.creator-avatar, .poster-avatar {
+    position: relative;
+    a {
+        // We give avatars a colored "fold" on the corner of their topic-list
+        // avatars. This is so I can quickly identify special groups
+        // (particularly regulars and sponsors), whom I owe special treatment,
+        // as per their sponsorship rewards.
+        &.group-maintainer, &.group-headhoncho, &.group-moderators, &.group-regular, &.group-sponsor {
+            img.avatar {
+                border-radius: 5px 5px 5px 0;
             }
-            &:first-child.latest {
-                // HACK The latest poster is bumped to the end of the poster list.
-                //   The exception is OP. If they are the latest poster, they're
-                //   just given a glow. I think this is counter-intuitive and
-                //   unobvious, so I bump them to the end of the list using flexbox
-                //   instead.
-                order: 9999;
-                .avatar.latest {
-                    position: static;
-                    box-shadow: none;
-                    border: 1px solid var(--header_background);
-                }
+            &:after, &:before {
+                border-left:  4px solid transparent;
+                border-top:    4px solid transparent;
+                border-right:   4px solid var(--header_background);
+                border-bottom: 4px solid var(--header_background);
+                width: 0%;
+                height: 0%;
+                content: "";
+                position: absolute;
+                right: 1px;
+                bottom: 1px;
             }
-
-            // We give avatars a colored "fold" on the corner of their topic-list
-            // avatars. This is so I can quickly identify special groups
-            // (particularly regulars and sponsors), whom I owe special treatment,
-            // as per their sponsorship rewards.
-            &.group-maintainer, &.group-headhoncho, &.group-moderator, &.group-regular, &.group-sponsor {
-                position: relative;
-                img.avatar {
-                    border-radius: 5px 5px 5px 0;
-                }
-                &:after, &:before {
-                    border-right:  4px solid transparent;
-                    border-top:    4px solid transparent;
-                    border-left:   4px solid var(--header_background);
-                    border-bottom: 4px solid var(--header_background);
-                    width: 0%;
-                    height: 0%;
-                    content: "";
-                    position: absolute;
-                    left: 1px;
-                    bottom: 1px;
-                }
-                &:before {
-                    left: 0;
-                    border-width: 5px;
-                }
-            }
-            &.group-maintainer:after { border-left-color: #a9a1e1; border-bottom-color: #a9a1e1; }
-            &.group-headhoncho:after { border-left-color: #ff6c6b; border-bottom-color: #ff6c6b; }
-            &.group-moderator:after  { border-left-color: #c678dd; border-bottom-color: #c678dd; }
-            &.group-regular:after    { border-left-color: #51afef; border-bottom-color: #51afef; }
-            &.group-sponsor:after    { border-left-color: #ECBE7B; border-bottom-color: #ECBE7B; }
-        }
-    }
-}
-
-// Only show the author in the guides category, because those posts are wikis
-// and less concerned about discussion.
-.category-guides,
-.category-guides-apps,
-.category-guides-config,
-.category-guides-elisp,
-.category-guides-workflows,
-.category-guides-cheatsheets,
-.category-guides-cli {
-    .topic-list {
-        .topic-list-data {
-            &.poster-list, .posters {
-                width: 3.5em;
+            &:before {
+                right: 0;
+                border-width: 6px;
             }
         }
-        .posters {
-            > a {
-                display: none;
-                box-shadow: none;
-            }
-            > a:first-child {
-                display: block;
-                margin-right: -4px;
+
+        @mixin flairColor($color) {
+            &:after {
+                border-right-color: $color;
+                border-bottom-color: $color;
             }
         }
-    }
-}
-
-.shared-drafts.topic-list {
-    .topic-list-item {
-        background-color: var(--topic-draft-bg);
+        &.group-maintainer { @include flairColor(#a9a1e1); }
+        &.group-headhoncho { @include flairColor(#ff6c6b); }
+        &.group-moderators { @include flairColor(#c678dd); }
+        &.group-regular    { @include flairColor(#51afef); }
+        &.group-sponsor    { @include flairColor(#ECBE7B); }
     }
 }

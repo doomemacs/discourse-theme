@@ -31,6 +31,7 @@ $header-background-alt: lighten($header-background, 8%);
     --topic-draft-bg: #{mix($header-background, $secondary, 30%)}; // TODO
     --topic-pinned-bg: #{mix($highlight, $secondary, 4%)}; // TODO
     --topic-pinned-border: #{desaturate(mix($highlight, $primary-low, 16%), 10%)}; // TODO
+    --topic-helpwanted-bg: #{mix($love, $secondary, 5%)}; // TODO
 
     --quote-bg: #{desaturate(mix($secondary, $highlight, 75%), 15%)};
     --quote-border: #{dark-light-choose(
@@ -93,7 +94,7 @@ $header-background-alt: lighten($header-background, 8%);
 
 
     --link-fg: #{mix($primary, $tertiary, 48%)};
-    --link-bg: #{rgba($highlight, 0.095)};
+    --link-bg: #{rgba($highlight, 0.115)};
     --link-underline: #{rgba($highlight, 0.18)};
     --link-bg-hover: #{rgba($highlight, 0.2)};
     --link-underline-hover: #{rgba($highlight, 0.4)};

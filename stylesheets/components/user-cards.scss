@@ -16,6 +16,9 @@
         // causes the badge to detach from it when the user's basic info is too
         // long (e.g. they've filled out their social links).
         margin-top: -42px;
+        .avatar {
+            border: none;
+        }
     }
 
     .avatar-flair {
@@ -29,17 +32,8 @@
         clear: both;
     }
 
-//     .card-content {
-//         padding-top: 31px;
-//     }
-//     .usercard-controls {
-//         margin-top: -19px;
-//     }
-//     &.no-bg .card-content {
-//         padding-top: 12px;
-//         margin-top: 19px;
-//     }
-//     span.ember-view {
-//         position: relative !important;
-//     }
+    .card-row .config-link {
+        margin-top: 2px;
+        .user-field-name { font-weight: bold; }
+    }
 }

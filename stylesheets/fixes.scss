@@ -66,11 +66,8 @@ label[for=ucd_do-not-show-again] {
 
 // The spacing between the topic-listing and navigational dropdowns is
 // inconsistent with other top-level element spacing.
-.navigation-container {
-    --nav-space: 0.5em;
-}
 .shared-drafts {
-    margin-top: 0.5em;
+    margin-top: 0em;
 }
 
 // Topic listings are 1px too wide at 100%.
@@ -80,19 +77,22 @@ label[for=ucd_do-not-show-again] {
 
 // Force markdown editor to use monospace fonts.
 .d-editor-input {
-  font-family: $monospaced_font;
-}
-
-// I add an extra column to the topic listing table header in
-// common/head_tag.html to fix an alignment issue in some topic lists, but it
-// causes a new issue for the shared-drafts list at the top of each topic list
-// page, so forcibly hide it.
-// FIXME Address the source, not the symptom.
-.shared-drafts .hideme {
-    display: none;
+  font-family: $monospace-font;
 }
 
 // The bottom of categories' names is cut off.
 .category-list .badge-category .category-name {
     line-height: initial;
+}
+
+// Stop footnote buttons from consuming too much vertical space (particularly in
+// sidebar posts)
+.inline-footnotes a.expand-footnote {
+    min-height: auto;
+}
+
+// FIXME Gravatars are broken on our instance due to upstream issues (with
+//   pkgs.discourse's nginx config), so hide the gravatar option for now.
+.avatar-selector .avatar-choice:nth-child(2) {
+    display: none;
 }

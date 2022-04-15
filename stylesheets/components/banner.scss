@@ -3,33 +3,35 @@
 // For changes to region above the header, where modal alerts and the banner
 // post are displayed.
 
-.alert {
-    .close {
-        top: 0.64em;
-    }
-    &.alert-info {
-        padding: 1em 1.4em;
-    }
-    // Make global notice stand out more, plus a warning icon:
-    &.alert-global-notice {
-        padding: 1.8em 1.4em;
-        font-size: 85%;
-        padding-left: 7.2em;
-        background-color: var(--header_background);
-        position: relative;
-        &:before {
-            content: "⚠️";
-            font-size: 400%;
-            position: absolute;
-            left: 0.425em;
-            top: calc(50% - 0.72em);
+#main-container {
+    .alert {
+        .close {
+            top: 0.64em;
+        }
+        &.alert-info {
+            padding: 1em 1.4em;
+        }
+        // Make global notice stand out more, plus a warning icon:
+        &.alert-global-notice {
+            padding: 1.8em 1.4em;
+            font-size: 85%;
+            padding-left: 7.2em;
+            background-color: var(--header_background);
+            position: relative;
+            &:before {
+                content: "⚠️";
+                font-size: 400%;
+                position: absolute;
+                left: 0.425em;
+                top: calc(50% - 0.72em);
+            }
         }
     }
 }
 
 // Make certain things easier to see, like headings or alerts
 // #banner { font-size: 110%; }
-#discourse-modal .alert.alert-info { font-size: 95%; }
+// #discourse-modal .alert.alert-info { font-size: 95%; }
 
 // Make the welcome-link-banner our own.
 // TODO Fork discourse/discourse-welcome-link-banner so this can be lighter?

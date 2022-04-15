@@ -10,19 +10,19 @@ img.avatar {
 .topic-avatar .avatar-flair {
     bottom: -3px !important;
     right: -5px !important;
-    width: 14px !important;
-    height: 14px !important;
-    font-size: 70% !important;
+    width: 16px !important;
+    height: 16px !important;
+    font-size: 75% !important;
 }
 
 // Give avatars a default background to make transparent avatars pop.
-.avatar { background-color: darken($secondary, 6%); }
+// .avatar { background: var(--header_background); }
 // Make avatars and their badges more visible against similar backgrounds
 .avatar, .avatar-flair {
     border: 1px solid var(--header_background);
 }
-#user-card .avatar-flair    { border: 5px solid var(--header_background); }
-.topic-avatar .avatar-flair { border: 3px solid var(--secondary); }
+#user-card .avatar-flair    { border: 4px solid var(--header_background); }
+.topic-avatar .avatar-flair { border: 2px solid var(--secondary); }
 
 // Don't show outline for users without flairs.
 .avatar-flair.avatar-flair-undefined { display: none; }

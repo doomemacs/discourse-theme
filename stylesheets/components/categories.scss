@@ -15,27 +15,6 @@
     }
 }
 
-tr .subcategories {
-    font-size: 100%;
-    .subcategory {
-        margin-right: 0.95em;
-    }
-}
-
-.category-list tbody > tr[data-category-id="5"] .subcategories {
-    font-size: 120%;
-    .subcategory {
-        width: 13em;
-        padding-bottom: 0.25em;
-        margin-right: 0;
-        .category-badge-icon { margin-right: 0.275em; }
-    }
-}
-
-.category .category-description {
-    line-height: 1.5;
-}
-
 .category-list {
     .featured-topic {
         margin-top: 8px;
@@ -43,4 +22,10 @@ tr .subcategories {
     tbody .latest {
         padding-bottom: 16px;
     }
+    .subcategories {
+        .badge-notification {
+            padding-left: 0;
+        }
+    }
+
 }

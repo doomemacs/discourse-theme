@@ -4,7 +4,19 @@
 // plugin. See https://github.com/hlissner/discourse-category-sidebars
 
 body.custom-sidebar {
+    #list-area .show-more.has-topics .alert {
+        width: 100%;
+        top: -2px;
+    }
+    @media screen and (min-width: 833px) {
+        #list-area .show-more.has-topics .alert {
+            top: -4px;
+        }
+    }
     @media screen and (min-width: 767px) {
+        #list-area .show-more.has-topics .alert {
+            width: 74%;
+        }
         .contents .topic-list {
             grid-column-gap: 1%;
         }
@@ -22,27 +34,56 @@ body.custom-sidebar {
         // Fix sidebar being pushed down when there are no drafts
         position: static !important;
         // Align top of sidebar with top of topic table header.
-        margin-top: -10px !important;
+        margin-top: -19px !important;
 
         // Ensure all top-level elements in sidebar take up all available width.
         > .ember-view { width: 100%; }
 
         .sticky-sidebar .cooked {
+            // Sidebars don't have as much real estate to work with, so consume
+            // a little less of it.
             font-size: 85%;
-            line-height: 1.35;
+            line-height: 1.475;
 
-            // Hide the category "description", which will (by convention) by in
-            // the first blockquote of the post.
-            > blockquote:first-child { display: none; }
+            // HACK Images are oversized in the buffer due to upstream
+            //   stylesheets (in discourse-category-sidebars). This shrinks them
+            //   back to sane sizes.
+            p, li {
+                img, video {
+                    width: auto !important;
+                }
+                img.emoji {
+                    width: 17px !important;
+                    vertical-align: -0.325em;
+                }
+            }
 
             > blockquote {
-                // Less pronounced indentation on lists.
-                > ul, > ol {
-                    padding-left: 0px !important;
-                    ul, ol { padding-left: 12px !important; }
+                // Hide the category "description", which will (by convention)
+                // by in the first blockquote of the post.
+                &:first-child {
+                    display: none;
                 }
 
-                &.notice {
+                // Make lists take up less space near headings
+                h1, h2, h3, h4, h5 {
+                    margin-bottom: 0.25em !important;
+                    + ul, + ol {
+                        margin-top: -0.125em !important;
+                    }
+                }
+
+                // Less pronounced indentation on lists.
+                > ul, > ol {
+                    padding-left: 0 !important;
+                    margin-left: 1em;
+                    ul, ol { padding-left: 1em !important; }
+                }
+                > ol {
+                    padding-left: 0.125em !important;
+                }
+
+                &.notice, .notice {
                     background-color: var(--sidebar-tip-bg);
                     border-left-width: 40px;
                     border-left-color: transparent;

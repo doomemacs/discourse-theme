@@ -51,12 +51,17 @@ a.mention-group {
     padding: 10px 0 9px;
 }
 
-// .post-stream {
-//     .topic-post + .gap {
-//         border-top: 1px solid var(--primary-low);
-//         padding-top: 0.5em;
-//     }
-// }
+// Ensure clear borders on notices in between posts or notifications of
+// moderator action (e.g. closing/unlisting thread).
+.small-action, .post-notice {
+    border-collapse: collapse;
+}
+.small-action {
+    border-bottom: 1px solid var(--primary-low);
+    + .topic-post .post-notice {
+        border-top: 0;
+    }
+}
 
 // Notices blend into the background and become harder to notice, so undo that
 // and make the icon a louder color (for new notices, not old).
@@ -67,34 +72,19 @@ a.mention-group {
     }
 }
 
-// .topic-post {
-//     &.deleted {
-//         opacity: 0.5;
-//         background-color: var(--danger-low-mid);
-//         .cooked { background-color: transparent; }
-//         &:hover {
-//             opacity: 1.0;
-// //             .topic-avatar, .topic-body > * {
-// //                 opacity: 1.0;
-// //             }
-//         }
-//     }
-// }
-
-// .accepted-answer {
-//     svg.accepted {
-//         padding-right: 0.22em;
-//         font-size: 160%;
-//         margin-top: -0.1em;
-//         vertical-align: middle;
-//     }
-//     div.title {
-//         font-size: 125%;
-//         font-weight: bold;
-//         padding: 1em 0.8em !important;
-//         background: mix($secondary, $success, 75%) !important;
-//         border-left: 4px solid var(--success) !important;
-//     }
-//     .quote-toggle { display: none; }
-//     blockquote { display: none; }
-// }
+// More prominent "Solved by X in post #N" notice
+.accepted-answer {
+    svg.accepted {
+        padding-right: 0.22em;
+        font-size: 160%;
+        margin-top: -0.1em;
+        vertical-align: middle;
+    }
+    div.title {
+        font-size: 120%;
+        font-weight: bold;
+        padding: 0.8em 0.6em !important;
+    }
+    .quote-toggle { display: none; }
+    blockquote { display: none; }
+}
