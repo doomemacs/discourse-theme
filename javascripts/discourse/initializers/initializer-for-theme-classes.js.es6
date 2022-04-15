@@ -21,15 +21,19 @@ export default {
             "rgb(236, 239, 244)": [ "doom-nord",        false, "nord" ]
         }[window.getComputedStyle(root).backgroundColor];
 
-        root.classList.add(`${theme}-theme`);
-        root.classList.add(dark ? "dark" : "light");
+        if (root.classList) {
+          root.classList.add(`${theme}-theme`);
+          root.classList.add(dark ? "dark" : "light");
+        }
 
         const path = settings.theme_uploads[`hljs-${hljs_theme}`];
-        const link = document.createElement("link");
-        link.setAttribute("rel", "stylesheet");
-        link.setAttribute("type", "text/css");
-        link.setAttribute("href", path);
-        document.head.appendChild(link);
+        if (path) {
+          const link = document.createElement("link");
+          link.setAttribute("rel", "stylesheet");
+          link.setAttribute("type", "text/css");
+          link.setAttribute("href", path);
+          document.head.appendChild(link);
+        }
       } catch (error) {
         console.error(error);
         console.error(
