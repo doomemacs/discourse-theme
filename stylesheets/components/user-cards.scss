@@ -1,13 +1,8 @@
 // // user-cards.scss
 
-// To match the gap between username and title in user cards.
-.iconic-user-fields {
-    padding-top: 0.375em;
-}
-
 // Fix the user card's background from having the same background as #main.
 .user-card, .group-card {
-    .card-content { background: darken($secondary, 6%); }
+    .card-content { background: var(--header_background); }
 }
 
 #user-card {
@@ -22,18 +17,34 @@
     }
 
     .avatar-flair {
-        bottom: -8px !important;
-    }
-
-    .username, h2 { float: left; margin-right: 1.5em; }
-    .username + h2 { clear: right; }
-    .iconic-user-fields {
-        float: left;
-        clear: both;
+        right: -4px !important;
+        bottom: -4px !important;
+        width: 30px;
+        height: 30px;
+        border-width: 4px;
+        font-size: 85%;
+        &.rounded {
+            border-radius: 24px 24px 0 24px;
+        }
     }
 
     .card-row .config-link {
-        margin-top: 2px;
         .user-field-name { font-weight: bold; }
     }
+}
+
+// For hlissner/discourse-social-links-clickable component
+.iconic-user-fields {
+    .fa {
+        text-decoration: underline;
+        color: var(--primary);
+        &:hover {
+            color: var(--primary-high);
+        }
+    }
+}
+
+.user-location-and-website-outlet {
+    margin-top: 1px;
+    margin-left: 14px;
 }
