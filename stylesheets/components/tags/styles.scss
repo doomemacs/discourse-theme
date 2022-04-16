@@ -73,10 +73,11 @@
 
 @mixin modtag {
   background-color: var(--header_background);
-  padding: 0 0.25em;
+  padding: 0 0.3em;
   text-transform: uppercase;
   border-radius: 2px;
   &.bullet:before { display: none; }
+  .d-header & { background-color: var(--secondary); }
 }
 
 // Version tags
