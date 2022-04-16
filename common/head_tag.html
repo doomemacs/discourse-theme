@@ -52,6 +52,9 @@
       {{/if}}
 
       <a href={{topic.url}} class="date">{{format-date topic.createdAt format="tiny"}}</a>
+      <span class="views {{topic.viewsHeat}}">
+        {{d-icon "far-eye"}} {{number topic.views numberKey="views_long"}}
+      </span>
       {{~#if topic.replyCount}}
         <span class='reply-comment'>{{d-icon "comment"}} {{topic.replyCount}}</span>
       {{/if}}
