@@ -2,7 +2,10 @@
 
 // Fix the user card's background from having the same background as #main.
 .user-card, .group-card {
-    .card-content { background: var(--header_background); }
+    .card-content { background: rgba(var(--header_background-rgb), 0.88); }
+}
+.user-card {
+    border: 1px solid var(--header_background);
 }
 
 #user-card {
