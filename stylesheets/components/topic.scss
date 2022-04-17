@@ -2,11 +2,13 @@
 // out and are easier to identify.
 span.username {
     a { font-weight: bolder; }
-    &.headhoncho  a { color: #ff6c6b !important; }
-    &.regular     a { color: #51afef; }
-    &.moderator   a { color: #c678dd; }
-    &.sponsor     a { color: #ECBE7B; }
-    &.maintainer  a { color: #a9a1e1; }
+    &.admin             a { color: #ff6c6b !important; }
+    &.moderator         a { color: #c678dd; }
+    &.group-sponsors    a { color: #ECBE7B; }
+    &.group-maintainers a { color: #a9a1e1; }
+    &.group-trust_level_3, &.group-trust_level_4 {
+        a { color: #51afef; }
+    }
 }
 
 a.mention {

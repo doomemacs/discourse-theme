@@ -92,9 +92,16 @@
 <script>
   (function(){
     function addAdmin(classes, user) {
-      return (user.username !== 'hlissner' && user.moderator)
-           ? `${classes} group-moderators`
-           : classes;
+      if (user.admin) {
+        return `${classes} group-admins`;
+      } else if (user.moderator) {
+        return `${classes} group-moderators`;
+      } else if (user.flair_name && !user.flair_name.match(/^trust_level_/)) {
+        return `${classes} group-${user.flair_name}`;
+      } else if (user.trust_level >= 3) {
+        return `${classes} group-regulars`;
+      }
+      return classes;
     }
     require('discourse/components/topic-list-item').default.reopen({
       creatorClasses: function() {

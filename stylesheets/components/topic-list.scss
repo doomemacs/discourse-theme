@@ -158,7 +158,7 @@ $margin-6: 6px;
         // avatars. This is so I can quickly identify special groups
         // (particularly regulars and sponsors), whom I owe special treatment,
         // as per their sponsorship rewards.
-        &.group-maintainer, &.group-headhoncho, &.group-moderators, &.group-regular, &.group-sponsor {
+        &.group-maintainer, &.group-admins, &.group-moderators, &.group-regulars, &.group-sponsor {
             img.avatar {
                 border-radius: 5px 5px 5px 0;
             }
@@ -187,9 +187,9 @@ $margin-6: 6px;
             }
         }
         &.group-maintainer { @include flairColor(#a9a1e1); }
-        &.group-headhoncho { @include flairColor(#ff6c6b); }
+        &.group-admins     { @include flairColor(#ff6c6b); }
         &.group-moderators { @include flairColor(#c678dd); }
-        &.group-regular    { @include flairColor(#51afef); }
+        &.group-regulars   { @include flairColor(#51afef); }
         &.group-sponsor    { @include flairColor(#ECBE7B); }
     }
 }
