@@ -1,4 +1,5 @@
 import { withPluginApi } from "discourse/lib/plugin-api";
+import site from "discourse/models/site";
 
 export default {
   name: "doom-theme-init-config-link",
@@ -17,7 +18,7 @@ export default {
       api.modifyClass('model:user', {
         pluginId: 'doom-theme-init-config-link',
         configLink: function() {
-          const siteUserFields = Discourse.Site.currentProp('user_fields');
+          const siteUserFields = site.currentProp('user_fields');
           if (!Ember.isEmpty(siteUserFields)) {
             const configField = siteUserFields.filterBy('name', 'Config Location')[0];
             if (!configField) return;
