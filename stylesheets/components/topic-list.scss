@@ -15,43 +15,40 @@ $margin-6: 6px;
 .topic-list {
     margin-top: 6px;
     td {
-        padding-bottom: 6px;
         font-size: 0.8em;
-    }
-    .creator {
-        > span, > a {
-            color: var(--primary-medium);
+        padding-bottom: 6px;
+        &:first-of-type {
+            padding: 12px 0 12px 8px;
+        }
+        &.star {
+            width: 40px;
+        }
+        &.last-post, th.activity {
+            width: 135px;
+            text-align: right;
+            .relative-date {
+                color: var(--primary-medium);
+            }
         }
     }
-    .editor a {
-        color: var(--primary-very-high);
-    }
-    td:first-of-type {
-        padding: 12px 0 12px 8px;
-    }
-    td.star {
-        width: 40px;
-    }
-    td.last-post, th.activity {
-        width: 135px;
-        text-align: right;
-        .relative-date {
-            // color: $color-slate;
-            color: var(--primary-medium);
-        }
-    }
-    .creator {
-        margin-top: 3px;
+    button.bulk-select {
+        padding: 5px;
     }
     .creator, .editor {
         font-size: 13px;
         display: block;
     }
-    .topic-list-item .discourse-tags {
-        margin-left: $margin-6;
+    .creator {
+        margin-top: 3px;
+        > span, > a {
+            color: var(--primary-medium);
+        }
+        .views {
+            margin-right: 5px;
+        }
     }
-    button.bulk-select {
-        padding: 5px;
+    .editor a {
+        color: var(--primary-very-high);
     }
     .creator-username {
         margin-right: $margin-6;
@@ -63,10 +60,13 @@ $margin-6: 6px;
     }
     .poster-avatar {
         float: right;
-        margin-top: 2px;
+        margin-top: 1px;
+        @media screen and (min-width: 845px) {
+            margin-top: 2px;
+        }
     }
     .poster-info {
-        width: 70%;
+        width: 71%;
         float: left;
         text-align: right;
         // In case of long usernames
@@ -78,6 +78,9 @@ $margin-6: 6px;
     .badge-wrapper, .topic-list-item .discourse-tags {
         font-size: var(--font-0);
     }
+    .topic-list-item .discourse-tags {
+        margin-left: $margin-6;
+    }
     .badge-wrapper {
         background-color: var(--header_background);
         padding: 0 0.35em;
@@ -86,9 +89,6 @@ $margin-6: 6px;
         }
     }
 
-    .creator .views {
-        margin-right: 5px;
-    }
     .reply-comment + .likes {
         margin-left: 5px;
     }
@@ -123,13 +123,8 @@ $margin-6: 6px;
                 border-bottom-color: var(--topic-pinned-border);
                 .title { font-weight: bold; }
             }
-
             &.tag-help-wanted {
                 background-color: var(--topic-helpwanted-bg);
-                // .topic-list-data:first-of-type {
-                //     border-left: 4px solid var(--love);
-                //     padding-left: 8px;
-                // }
             }
             &.archived, &.tag-obsolete, &.tag-stale, &.tag-duplicate, &.tag-invalid {
                 opacity: 0.4;
@@ -141,7 +136,6 @@ $margin-6: 6px;
             }
         }
     }
-
 }
 
 .topic-list-header {
