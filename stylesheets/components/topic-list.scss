@@ -69,6 +69,11 @@ $margin-6: 6px;
         width: 70%;
         float: left;
         text-align: right;
+        // In case of long usernames
+        .editor {
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
     }
     .badge-wrapper, .topic-list-item .discourse-tags {
         font-size: var(--font-0);
