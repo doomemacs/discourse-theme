@@ -19,6 +19,9 @@ $margin-6: 6px;
         padding-bottom: 6px;
         &:first-of-type {
             padding: 12px 0 12px 8px;
+            .mobile-device & {
+                padding: 10px 4px 10px 2px;
+            }
         }
         &.star {
             width: 40px;
@@ -172,9 +175,9 @@ $margin-6: 6px;
                 border-radius: 5px 5px 5px 0;
             }
             &:after, &:before {
-                border-left:  4px solid transparent;
+                border-left:   4px solid transparent;
                 border-top:    4px solid transparent;
-                border-right:   4px solid var(--header_background);
+                border-right:  4px solid var(--header_background);
                 border-bottom: 4px solid var(--header_background);
                 width: 0%;
                 height: 0%;
