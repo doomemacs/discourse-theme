@@ -43,9 +43,6 @@ $margin-6: 6px;
         > span, > a {
             color: var(--primary-medium);
         }
-        .views {
-            margin-right: 5px;
-        }
     }
     .editor a {
         color: var(--primary-very-high);
@@ -55,15 +52,12 @@ $margin-6: 6px;
     }
     .creator-avatar {
         float: left;
-        margin-right: 10px;
+        margin-left: -54px;
         margin-top: 0px;
     }
     .poster-avatar {
         float: right;
         margin-top: 1px;
-        @media screen and (min-width: 845px) {
-            margin-top: 2px;
-        }
     }
     .poster-info {
         width: 71%;
@@ -78,30 +72,37 @@ $margin-6: 6px;
     .badge-wrapper, .topic-list-item .discourse-tags {
         font-size: var(--font-0);
     }
-    .topic-list-item .discourse-tags {
-        margin-left: $margin-6;
-    }
+
+    .mobile-device & .topic-list-item .discourse-tag {
+        margin-right: 6px;
+     }
     .badge-wrapper {
         background-color: var(--header_background);
         padding: 0 0.35em;
         &.bullet {
-            margin-right: 4px;
+            margin-right: 0;
         }
     }
 
-    .reply-comment + .likes {
-        margin-left: 5px;
+    // FIXME Use inline-flex instead
+    .reply-comment, .likes, .views {
+        margin-right: 4px;
+        svg { font-size: 90%; vertical-align: -0.05em; }
+    }
+    .date {
+        margin-right: 5px;
+    }
+    .badge-wrapper, .category {
+        + .discourse-tags {
+            margin-left: 6px;
+        }
     }
     a.likes:hover {
         color: var(--love);
     }
-    .date {
-        margin-right: 6px;
-    }
 
     .topic-excerpt {
         clear: both;
-        padding-left: 58px;
         // Hide redundant "read more" buttons (the whole post listing is a
         // link), and overly busy emoji in topic preview excerpts.
         .topic-excerpt-more, .emoji {
@@ -110,6 +111,15 @@ $margin-6: 6px;
     }
 
     .topic-list-body {
+        .main-link {
+            padding-left: 64px !important;
+            &.bulk-edit {
+                padding-left: 30px !important;
+            }
+        }
+        .right .main-link {
+            padding-left: 0 !important;
+        }
         tr {
             transition: opacity 0.12s ease-in-out;
             &:hover {

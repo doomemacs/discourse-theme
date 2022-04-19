@@ -21,7 +21,7 @@
     </td>
   {{/if}}
 
-  <td class='main-link clearfix topic-list-data'>
+  <td class='main-link clearfix topic-list-data{{~#if bulkSelectEnabled}} bulk-edit{{/if}}'>
     <div class='creator-avatar'>
       <a href="/users/{{topic.creator.username}}"
          data-user-card="{{topic.creator.username}}"
@@ -47,14 +47,7 @@
     {{~/if}}
     {{~raw-plugin-outlet name="topic-list-after-title"}}
     <div class='creator'>
-      {{~#if showCategory}}
-        {{category-link topic.category}}
-      {{/if}}
-
       <a href={{topic.url}} class="date">{{format-date topic.createdAt format="tiny"}}</a>
-      <span class="views {{topic.viewsHeat}}">
-        {{d-icon "far-eye"}} {{number topic.views numberKey="views_long"}}
-      </span>
       {{~#if topic.replyCount}}
         <span class='reply-comment'>{{d-icon "comment"}} {{topic.replyCount}}</span>
       {{/if}}
@@ -64,7 +57,11 @@
         </a>
       {{/if}}
 
-      <span>{{discourse-tags topic mode="list"}}</span>
+      {{~#if showCategory}}
+        {{category-link topic.category}}
+      {{/if}}
+
+      {{discourse-tags topic mode="list"}}
     </div>
     {{#if expandPinned}}
       {{raw "list/topic-excerpt" topic=topic}}
@@ -118,9 +115,9 @@
           if (lastPoster) {
             const bumpDate = this.get('topic.bumpedAt');
             const createdDate = this.get('topic.createdAt');
-            if (bumpDate !== createdDate) {
+            // if (bumpDate !== createdDate) {
               return addAdmin(lastPoster.extraClasses, lastPoster.user);
-            }
+            // }
           }
         }
       }.property(),
