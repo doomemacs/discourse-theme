@@ -111,13 +111,11 @@
         const posters = this.get('topic.posters');
         if (posters.length > 1) {
           const lastPosterName = this.get('topic.last_poster_username');
-          const lastPoster = posters.find(x => x.user.username === lastPosterName);
+          const lastPoster = posters.reverse().find(x => x.user.username === lastPosterName);
           if (lastPoster) {
             const bumpDate = this.get('topic.bumpedAt');
             const createdDate = this.get('topic.createdAt');
-            // if (bumpDate !== createdDate) {
-              return addAdmin(lastPoster.extraClasses, lastPoster.user);
-            // }
+            return addAdmin(lastPoster.extraClasses, lastPoster.user);
           }
         }
       }.property(),
