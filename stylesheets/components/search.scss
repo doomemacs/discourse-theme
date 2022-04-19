@@ -10,7 +10,7 @@
     }
 
     // HACK Fix mismatched borders on search input and button.
-    .search-menu {
+    .title .search-menu {
         .search-input, .search-icon {
             border-color: var(--header_background);
         }
