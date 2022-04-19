@@ -8,33 +8,12 @@ body.custom-sidebar {
         width: 100%;
         top: -2px;
     }
-    @media screen and (min-width: 833px) {
-        #list-area .show-more.has-topics .alert {
-            top: -4px;
-        }
-    }
-    @media screen and (min-width: 767px) {
-        #list-area .show-more.has-topics .alert {
-            width: 74%;
-        }
-        .contents .topic-list {
-            grid-column-gap: 1%;
-        }
-        &.sidebar-left .contents .topic-list {
-            grid-template-columns: 25% 74% !important;
-            -ms-grid-columns: 25% 74% !important;
-        }
-        &.sidebar-right .contents .topic-list {
-            grid-template-columns: 74% 25% !important;
-            -ms-grid-columns: 74% 25% !important;
-        }
-    }
 
     .category-sidebar {
         // Fix sidebar being pushed down when there are no drafts
         position: static !important;
         // Align top of sidebar with top of topic table header.
-        margin-top: -19px !important;
+        margin-top: -16px !important;
 
         // Ensure all top-level elements in sidebar take up all available width.
         > .ember-view { width: 100%; }
