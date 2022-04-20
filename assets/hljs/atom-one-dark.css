@@ -18,12 +18,19 @@ hue-6-2: #e6c07b
 
 */
 
-.hljs {
+pre code {
+  color: #94b5d5;
+  background: #21242b;
+}
+
+blockquote > pre code {
+  background: #282c34;
+}
+
+.hljs, .lang-nohighlight {
   display: block;
   overflow-x: auto;
   padding: 0.5em;
-  color: #abb2bf;
-  background: #282c34;
 }
 
 .hljs-comment,

@@ -10,11 +10,25 @@
  *   https://github.com/arcticicestudio/nord
  */
 
+.doom-city-lights-theme pre code {
+  background: #181E24;
+}
+.doom-city-lights-theme blockquote > pre code {
+  background: #1D252C;
+}
+
+pre code {
+  background: #272C36;
+}
+
+blockquote > pre code {
+  background: #2E3440;
+}
+
 .hljs {
   display: block;
   overflow-x: auto;
   padding: 0.5em;
-  background: #2E3440;
 }
 
 .hljs,

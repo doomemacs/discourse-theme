@@ -3,11 +3,13 @@
 $warning: #ecbe7b;
 
 // Colors
-$quote-bg: desaturate(mix($secondary, $highlight, 75%), 15%);
-$quote-border: dark-light-choose($quote-bg, lighten($header-background, 13%));
-$quote-border-alt: dark-light-choose(
-    darken($quote-border, 8%),
-    lighten($quote-border, 10%)
+$quote-bg: dark-light-choose(
+  desaturate(mix($secondary, $highlight, 90%), 12%),
+  desaturate(mix($header-background, $highlight, 80%), 4%)
+);
+$quote-border: dark-light-choose(
+  mix($secondary, $highlight, 76%),
+  desaturate(mix($header-background, $highlight, 70%), 6%)
 );
 
 $primary-low: dark-light-choose(
@@ -33,35 +35,14 @@ $header-background-alt: lighten($header-background, 8%);
     --topic-pinned-border: #{desaturate(mix($highlight, $primary-low, 16%), 10%)}; // TODO
     --topic-helpwanted-bg: #{mix($love, $secondary, 5%)}; // TODO
 
-    --quote-bg: #{desaturate(mix($secondary, $highlight, 75%), 15%)};
-    --quote-border: #{dark-light-choose(
-            $quote-bg,
-            lighten($header-background, 13%)
-        )};
-    --quote-border-2: #{dark-light-choose(
-            darken($quote-bg, 8%),
-            lighten($header-background, 23%)
-        )};
+    --quote-bg: #{$quote-bg};
+    --quote-border: #{$quote-border};
+    --quote-bg-2: #{mix($secondary, $quote-bg, 60%)};
+    --quote-border-2: #{$quote-border};
 
     --category-box-bg: #{mix($header-background, $secondary)};
 
     // --code-inline-bg: #{dark-light-choose(lighten($header-background, 7%), lighten($header-background, 4%))};
-    --code-bg: #{dark-light-choose(
-            lighten($header-background, 8%),
-            $header-background
-        )};
-    --code-fg: #{dark-light-choose(
-            lighten($primary, 15%),
-            darken(mix($primary, $highlight, 82%), 9%)
-        )};
-    --code-bg-1: #{dark-light-choose(
-            lighten($header-background, 7%),
-            lighten($header-background, 4%)
-        )};
-    --code-fg-1: #{dark-light-choose(
-            lighten($primary, 15%),
-            darken(mix($primary, $highlight, 82%), 9%)
-        )};
     --code-border: #{dark-light-choose(
             darken($header-background, 4%),
             darken($header-background, 4%)

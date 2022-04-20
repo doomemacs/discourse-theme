@@ -4,12 +4,19 @@ vim-hybrid theme by w0ng (https://github.com/w0ng/vim-hybrid)
 
 */
 
+pre code {
+  background: #1d1f21;
+}
+
+blockquote > pre code {
+  background: #282a36;
+}
+
 /*background color*/
 .hljs {
   display: block;
   overflow-x: auto;
   padding: 0.5em;
-  background: #1d1f21;
 }
 
 /*selection color*/

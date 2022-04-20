@@ -2,16 +2,15 @@
 
 code {
     padding: 3px 2px 0;
-
-    &.hljs {
-        color: var(--code-inline-fg) !important;
-        // Don't set background here, it's overridden by hljs and should be
-        // corrected there.
-    }
-    &:not(.hljs) {
-        color: var(--code-inline-fg) !important;
-        padding: 2px 4px 0;
-        background-color: var(--code-inline-bg) !important;
+}
+pre code {
+    font-size: 90%;
+}
+h1,h2,h3,h4,h5,h6,p,li {
+    code {
+        letter-spacing: -0.5px;
+        padding: 2px 2px 0;
+        background-color: var(--header_background);
     }
 }
 .copy-codeblocks code {
@@ -19,10 +18,8 @@ code {
     padding: 9px;
     margin-bottom: 2px;
     border-left: 4px solid var(--code-border);
-    background-color: var(--code-bg) !important;
     blockquote & {
         border-left: 4px solid var(--code-border);
-        background-color: var(--code-inline-bg) !important;
     }
 }
 
@@ -30,8 +27,7 @@ code {
 // know when to fix that.
 pre.dump {
     code {
-        border-left: 4px solid var(--quote-border-2);
-        font-size: 85%;
+        border-left: 4px solid var(--quote-border);
     }
 
     &:hover {
@@ -43,8 +39,8 @@ pre.dump {
             bottom: 1px;
             right: 0;
             font-size: 10px;
-            background-color: var(--code-bg);
-            color: var(--code-inline-fg);
+            background-color: var(--header_background);
+            // color: var(--code-inline-fg);
             font-weight: bold;
             padding: 3px 4px 0px;
             border-radius: 2px;
