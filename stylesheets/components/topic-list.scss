@@ -113,11 +113,18 @@ $margin-6: 6px;
         }
     }
 
+    .docs-browse & .topic-list-data:last-of-type {
+        text-align: right;
+    }
+
     .topic-list-body {
         .main-link {
             padding-left: 64px !important;
             &.bulk-edit {
                 padding-left: 30px !important;
+            }
+            .docs-browse & {
+                padding-left: 0 !important;
             }
         }
         .right .main-link {
