@@ -35,26 +35,24 @@ blockquote > pre code {
 
 .hljs-comment,
 .hljs-quote {
-  color: #5c6370;
+  color: #5B6268;
   font-style: italic;
 }
 
 .hljs-doctag,
 .hljs-keyword,
+.hljs-symbol,
 .hljs-formula {
   color: #c678dd;
 }
 
-.hljs-section,
-.hljs-name,
-.hljs-selector-tag,
-.hljs-deletion,
-.hljs-subst {
-  color: #e06c75;
+.hljs-literal {
+  color: #a9a1e1;
 }
 
-.hljs-literal {
-  color: #56b6c2;
+.hljs-deletion,
+.hljs-subst {
+  color: #ff6c6b;
 }
 
 .hljs-string,
@@ -62,7 +60,7 @@ blockquote > pre code {
 .hljs-addition,
 .hljs-attribute,
 .hljs-meta-string {
-  color: #98c379;
+  color: #98be65;
 }
 
 .hljs-built_in,
@@ -80,14 +78,19 @@ blockquote > pre code {
 .hljs-number {
   color: #d19a66;
 }
+.hljs-number {
+  font-weight: bold;
+}
 
-.hljs-symbol,
+.hljs-section,
+.hljs-name,
+.hljs-selector-tag,
 .hljs-bullet,
 .hljs-link,
 .hljs-meta,
 .hljs-selector-id,
 .hljs-title {
-  color: #61aeee;
+  color: #51afef;
 }
 
 .hljs-emphasis {
