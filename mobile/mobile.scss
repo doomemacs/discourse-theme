@@ -1,3 +1,14 @@
 .iconic-user-fields {
     padding-bottom: 2em;
 }
+
+abbr[title]:hover:after {
+    outline: 1px solid var(--primary-low);
+    background-color: var(--header_background);
+    font-size: 90%;
+    border-radius: 1px;
+    padding: 2px 4px;
+    margin-left: 3px;
+    margin-right: 3px;
+    content: ' (' attr(title) ') ';
+}
