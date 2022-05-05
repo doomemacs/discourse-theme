@@ -6,7 +6,7 @@
 .d-editor-preview p,
 .d-editor-preview li,
 .user-card-public-field {
-    a {
+    a[href] {
         transition: opacity 0.14s ease;
         opacity: 1.0;
         &:hover { opacity: 0.8; }
